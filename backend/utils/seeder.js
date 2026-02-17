@@ -1,0 +1,111 @@
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+// Load env vars
+dotenv.config();
+
+// Import models
+import User from '../models/User.js';
+import Content from '../models/Content.js';
+
+// Connect to DB
+mongoose.connect(process.env.MONGODB_URI);
+
+// Default content data
+const defaultContent = {
+  hero: {
+    headline: "We bring brands to life.",
+    subheadline: "NexGen Studio is a creative agency specializing in brand identity, web design, and digital campaigns for ambitious startups and growing businesses."
+  },
+  about: {
+    title: "About Us",
+    description: "We're a team of designers, developers, and strategists who believe great brands are built on clarity, consistency, and craft. Since 2020, we've helped 50+ companies tell their story and grow their audience."
+  },
+  services: {
+    items: [
+      { title: "Brand Identity", description: "Logo, type, color, guidelines." },
+      { title: "Web Design", description: "Responsive, fast, accessible." },
+      { title: "Campaign Kits", description: "Social, email, landing pages." }
+    ]
+  },
+  portfolio: {
+    projects: [
+      { title: "Lumen Coffee", subtitle: "Brand + Site", image: "/portfolio_top_left.jpg" },
+      { title: "North Supply", subtitle: "Packaging", image: "/portfolio_bottom_left.jpg" },
+      { title: "Daybreak App", subtitle: "UI Kit", image: "/portfolio_bottom_right.jpg" }
+    ]
+  },
+  process: {
+    steps: [
+      { number: "01", title: "Discover", description: "Goals, audience, constraints." },
+      { number: "02", title: "Design", description: "Systems, prototypes, polish." },
+      { number: "03", title: "Deliver", description: "Handoff, support, iteration." }
+    ]
+  },
+  results: {
+    metrics: [
+      { value: "12+", label: "Launches shipped" },
+      { value: "3 weeks", label: "Average time to first design" },
+      { value: "100%", label: "Remote-friendly process" }
+    ]
+  },
+  team: {
+    members: [
+      { name: "Alex Chen", role: "Creative Director", image: "/hero_portrait_left.jpg" },
+      { name: "Sam Rivera", role: "Lead Designer", image: "/about_portrait_left.jpg" },
+      { name: "Jordan Park", role: "Developer", image: "/services_workspace_right.jpg" }
+    ]
+  },
+  contact: {
+    email: "hello@nexgenstudio.com",
+    phone: "+1 (555) 123-4567",
+    address: "123 Creative Ave, San Francisco, CA 94102"
+  },
+  blog: {
+    featured: null
+  }
+};
+
+// Seed function
+const seedDatabase = async () => {
+  try {
+    console.log('🌱 Starting database seeding...\n');
+
+    // Clear existing data
+    console.log('Clearing existing data...');
+    await User.deleteMany({});
+    await Content.deleteMany({});
+
+    // Create admin user
+    console.log('Creating admin user...');
+    const adminPassword = 'admin123'; // Change this in production!
+
+    const admin = await User.create({
+      email: 'admin@nexgenstudio.com',
+      password: adminPassword,  // Model will hash this automatically
+      role: 'admin'
+    });
+    console.log(`✅ Admin user created: ${admin.email}`);
+
+    // Create default content
+    console.log('Creating default content...');
+    const content = await Content.create(defaultContent);
+    console.log('✅ Default content created');
+
+    console.log('\n========================================');
+    console.log('✅ Database seeded successfully!');
+    console.log('========================================');
+    console.log('\n📋 Admin Credentials:');
+    console.log(`   Email: admin@nexgenstudio.com`);
+    console.log(`   Password: ${adminPassword}`);
+    console.log('\n⚠️  Please change the admin password after first login!\n');
+
+    process.exit(0);
+  } catch (error) {
+    console.error('❌ Error seeding database:', error.message);
+    process.exit(1);
+  }
+};
+
+// Run seeder
+seedDatabase();
