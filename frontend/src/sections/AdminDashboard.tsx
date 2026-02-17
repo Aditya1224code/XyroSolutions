@@ -20,7 +20,8 @@ import {
   Phone,
   Building,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  Menu
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { uploadApi } from '../lib/api';
@@ -69,6 +70,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
   const [selectedInquiry, setSelectedInquiry] = useState<ServiceInquiry | null>(null);
   const [inquiryStats, setInquiryStats] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Fetch work items
   useEffect(() => {
@@ -378,10 +380,37 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
   ];
 
   return (
-    <div className="min-h-screen bg-off-white flex">
+    <div className="min-h-screen bg-off-white flex flex-col md:flex-row">
+      {/* Mobile Header */}
+      <div className="md:hidden bg-dark text-white p-4 flex items-center justify-between sticky top-0 z-40">
+        <div>
+          <h1 className="font-display font-bold text-lg">NexGen Studio</h1>
+          <p className="text-white/50 text-xs">Admin Dashboard</p>
+        </div>
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+        >
+          {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-40 mt-[60px]"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-64 bg-dark text-white flex flex-col fixed h-full">
-        <div className="p-6 border-b border-white/10">
+      <aside className={`
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+        md:translate-x-0
+        w-64 bg-dark text-white flex flex-col fixed h-[calc(100%-60px)] md:h-full top-[60px] md:top-0 z-50
+        transition-transform duration-300 ease-in-out
+      `}>
+        <div className="hidden md:block p-6 border-b border-white/10">
           <h1 className="font-display font-bold text-xl">NexGen Studio</h1>
           <p className="text-white/50 text-sm">Admin Dashboard</p>
         </div>
@@ -392,7 +421,10 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as TabType)}
+                onClick={() => {
+                  setActiveTab(tab.id as TabType);
+                  setSidebarOpen(false);
+                }}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
                   activeTab === tab.id 
                     ? 'bg-lime text-dark' 
@@ -408,14 +440,20 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
 
         <div className="p-4 border-t border-white/10 space-y-2">
           <button
-            onClick={onViewSite}
+            onClick={() => {
+              setSidebarOpen(false);
+              onViewSite();
+            }}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-white/70 hover:bg-white/10 transition-colors"
           >
             <ArrowLeft size={18} />
             <span>View Site</span>
           </button>
           <button
-            onClick={onLogout}
+            onClick={() => {
+              setSidebarOpen(false);
+              onLogout();
+            }}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-white/70 hover:bg-white/10 transition-colors"
           >
             <LogOut size={18} />
@@ -425,15 +463,15 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 ml-64 p-8 overflow-y-auto">
-        <div className="max-w-4xl">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="font-display font-bold text-3xl text-dark capitalize">
+      <main className="flex-1 md:ml-64 p-4 md:p-8 overflow-y-auto">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 md:mb-8">
+            <h2 className="font-display font-bold text-2xl md:text-3xl text-dark capitalize">
               {activeTab} Section
             </h2>
             <button
               onClick={handleSave}
-              className="btn-primary flex items-center gap-2"
+              className="btn-primary flex items-center gap-2 text-sm md:text-base"
             >
               <Save size={18} />
               Save Changes
@@ -792,7 +830,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
                 <div className="space-y-4">
                   {localContent.results.metrics.map((metric, index) => (
                     <div key={index} className="border border-gray-200 rounded-lg p-4">
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input
                           type="text"
                           value={metric.value}
