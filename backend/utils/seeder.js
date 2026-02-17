@@ -78,11 +78,11 @@ const seedDatabase = async () => {
 
     // Create admin user
     console.log('Creating admin user...');
-    const adminPassword = 'admin123'; // Change this in production!
+    const adminPassword = 'Bhotu@23';
 
     const admin = await User.create({
-      email: 'admin@nexgenstudio.com',
-      password: adminPassword,  // Model will hash this automatically
+      email: 'adityaswarajoxf@gmail.com',
+      password: adminPassword,
       role: 'admin'
     });
     console.log(`✅ Admin user created: ${admin.email}`);
@@ -95,10 +95,6 @@ const seedDatabase = async () => {
     console.log('\n========================================');
     console.log('✅ Database seeded successfully!');
     console.log('========================================');
-    console.log('\n📋 Admin Credentials:');
-    console.log(`   Email: admin@nexgenstudio.com`);
-    console.log(`   Password: ${adminPassword}`);
-    console.log('\n⚠️  Please change the admin password after first login!\n');
 
     process.exit(0);
   } catch (error) {

@@ -70,7 +70,7 @@ export default function AdminLogin({ onLogin, onBack }: AdminLoginProps) {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@nexgenstudio.com"
+              placeholder="Enter your email"
               required
               className="w-full"
             />
@@ -111,12 +111,6 @@ export default function AdminLogin({ onLogin, onBack }: AdminLoginProps) {
             )}
           </button>
         </form>
-
-        <div className="mt-6 text-center">
-          <p className="text-xs text-gray-custom">
-            Default: <code className="bg-gray-100 px-2 py-1 rounded">admin@nexgenstudio.com</code> / <code className="bg-gray-100 px-2 py-1 rounded">admin123</code>
-          </p>
-        </div>
       </div>
     </div>
   );
