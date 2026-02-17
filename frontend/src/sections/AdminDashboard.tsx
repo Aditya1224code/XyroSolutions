@@ -26,6 +26,8 @@ import { toast } from 'sonner';
 import { uploadApi } from '../lib/api';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'https://xyrosolutions.onrender.com/api';
+
 type TabType = 'hero' | 'about' | 'services' | 'portfolio' | 'work' | 'process' | 'results' | 'blog' | 'contact' | 'inquiries';
 
 interface ServiceInquiry {
@@ -93,13 +95,13 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
     try {
       setLoading(true);
       const token = localStorage.getItem('nexgen-token');
-      const response = await axios.get('http://localhost:5000/api/service-inquiries', {
+      const response = await axios.get(`${API_URL}/service-inquiries`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setInquiries(response.data.data || []);
       
       // Fetch stats
-      const statsResponse = await axios.get('http://localhost:5000/api/service-inquiries/stats', {
+      const statsResponse = await axios.get(`${API_URL}/service-inquiries/stats`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setInquiryStats(statsResponse.data.data);
@@ -114,7 +116,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
   const updateInquiryStatus = async (id: string, status: string, priority?: string, adminNotes?: string) => {
     try {
       const token = localStorage.getItem('nexgen-token');
-      await axios.put(`http://localhost:5000/api/service-inquiries/${id}`, 
+      await axios.put(`${API_URL}/service-inquiries/${id}`, 
         { status, priority, adminNotes },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -129,7 +131,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
     if (!confirm('Are you sure you want to delete this inquiry?')) return;
     try {
       const token = localStorage.getItem('nexgen-token');
-      await axios.delete(`http://localhost:5000/api/service-inquiries/${id}`, {
+      await axios.delete(`${API_URL}/service-inquiries/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Inquiry deleted successfully');
@@ -143,7 +145,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
   const fetchWorkItems = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/work');
+      const response = await axios.get(`${API_URL}/work`);
       setWorkItems(response.data.data || []);
     } catch (error) {
       console.error('Error fetching work items:', error);
@@ -161,7 +163,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/api/work', workData, {
+      const response = await axios.post(`${API_URL}/work`, workData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -184,7 +186,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
         return;
       }
 
-      const response = await axios.put(`http://localhost:5000/api/work/${id}`, workData, {
+      const response = await axios.put(`${API_URL}/work/${id}`, workData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -211,7 +213,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
         return;
       }
 
-      const response = await axios.delete(`http://localhost:5000/api/work/${id}`, {
+      const response = await axios.delete(`${API_URL}/work/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -229,7 +231,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
   const fetchServiceItems = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/services');
+      const response = await axios.get(`${API_URL}/services`);
       setServiceItems(response.data.data || []);
     } catch (error) {
       console.error('Error fetching service items:', error);
@@ -247,7 +249,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/api/services', serviceData, {
+      const response = await axios.post(`${API_URL}/services`, serviceData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -270,7 +272,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
         return;
       }
 
-      const response = await axios.put(`http://localhost:5000/api/services/${id}`, serviceData, {
+      const response = await axios.put(`${API_URL}/services/${id}`, serviceData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -297,7 +299,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
         return;
       }
 
-      const response = await axios.delete(`http://localhost:5000/api/services/${id}`, {
+      const response = await axios.delete(`${API_URL}/services/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
