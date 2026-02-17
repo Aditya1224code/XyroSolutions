@@ -71,6 +71,7 @@ const defaultContent = {
   contact: {
     headline: "Ready when you are.",
     body: "Tell us what you're building. We'll reply within 2 business days.",
+    cta: "Get in touch",
     email: "hello@nexgen.studio",
     location: "Based everywhere / UTC±2",
     form: {
