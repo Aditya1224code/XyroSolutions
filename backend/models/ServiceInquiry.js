@@ -21,11 +21,10 @@ const serviceInquirySchema = new mongoose.Schema({
     maxlength: [2000, 'Description cannot exceed 2000 characters']
   },
   
-  // Budget range
+  // Budget (free text input)
   budget: {
     type: String,
-    required: [true, 'Budget is required'],
-    enum: ['under-5k', '5k-10k', '10k-25k', '25k-50k', '50k-100k', 'above-100k', 'not-sure']
+    required: [true, 'Budget is required']
   },
   
   // Timeline
