@@ -8,60 +8,56 @@ export const createInquiry = async (req, res) => {
   try {
     const inquiry = await ServiceInquiry.create(req.body);
     
-    // Send notification email to admin
-    try {
-      await sendEmail(
-        process.env.ADMIN_EMAIL || 'admin@nexgenstudio.com',
-        `New Service Inquiry: ${inquiry.category}`,
-        `
-          <h2>New Service Inquiry Received</h2>
-          <p><strong>Category:</strong> ${inquiry.category}</p>
-          <p><strong>Project Type:</strong> ${inquiry.projectType}</p>
-          <p><strong>Budget:</strong> ${inquiry.budget}</p>
-          <p><strong>Timeline:</strong> ${inquiry.timeline}</p>
-          <h3>Contact Information</h3>
-          <p><strong>Name:</strong> ${inquiry.contactInfo.name}</p>
-          <p><strong>Email:</strong> ${inquiry.contactInfo.email}</p>
-          <p><strong>Phone:</strong> ${inquiry.contactInfo.phone}</p>
-          <p><strong>Company:</strong> ${inquiry.contactInfo.company || 'N/A'}</p>
-          <h3>Project Description</h3>
-          <p>${inquiry.projectDescription}</p>
-          <p><a href="${process.env.FRONTEND_URL}/admin">View in Admin Dashboard</a></p>
-        `
-      );
-    } catch (emailError) {
-      console.error('Failed to send notification email:', emailError);
-    }
-    
-    // Send confirmation email to user
-    try {
-      await sendEmail(
-        inquiry.contactInfo.email,
-        'Thank you for your inquiry - NexGen Studio',
-        `
-          <h2>Thank you for contacting NexGen Studio!</h2>
-          <p>Dear ${inquiry.contactInfo.name},</p>
-          <p>We have received your service inquiry and our team will review it shortly.</p>
-          <p>Here's a summary of your request:</p>
-          <ul>
-            <li><strong>Service Category:</strong> ${inquiry.category}</li>
-            <li><strong>Project Type:</strong> ${inquiry.projectType}</li>
-            <li><strong>Budget Range:</strong> ${inquiry.budget}</li>
-            <li><strong>Timeline:</strong> ${inquiry.timeline}</li>
-          </ul>
-          <p>We typically respond within 24-48 hours. In the meantime, feel free to explore our portfolio at our website.</p>
-          <p>Best regards,<br>NexGen Studio Team</p>
-        `
-      );
-    } catch (emailError) {
-      console.error('Failed to send confirmation email:', emailError);
-    }
-    
+    // Send response immediately - don't wait for emails
     res.status(201).json({
       success: true,
       message: 'Your inquiry has been submitted successfully. We will contact you soon!',
       data: inquiry
     });
+    
+    // Send emails in background (non-blocking)
+    // Send notification email to admin
+    sendEmail({
+      to: process.env.ADMIN_EMAIL || 'admin@nexgenstudio.com',
+      subject: `New Service Inquiry: ${inquiry.category}`,
+      html: `
+        <h2>New Service Inquiry Received</h2>
+        <p><strong>Category:</strong> ${inquiry.category}</p>
+        <p><strong>Project Type:</strong> ${inquiry.projectType}</p>
+        <p><strong>Budget:</strong> ${inquiry.budget}</p>
+        <p><strong>Timeline:</strong> ${inquiry.timeline}</p>
+        <h3>Contact Information</h3>
+        <p><strong>Name:</strong> ${inquiry.contactInfo.name}</p>
+        <p><strong>Email:</strong> ${inquiry.contactInfo.email}</p>
+        <p><strong>Phone:</strong> ${inquiry.contactInfo.phone}</p>
+        <p><strong>Company:</strong> ${inquiry.contactInfo.company || 'N/A'}</p>
+        <h3>Project Description</h3>
+        <p>${inquiry.projectDescription}</p>
+        <p><a href="${process.env.FRONTEND_URL}/admin">View in Admin Dashboard</a></p>
+      `
+    }).catch(err => console.error('Failed to send admin notification:', err));
+    
+    // Send confirmation email to user
+    sendEmail({
+      to: inquiry.contactInfo.email,
+      subject: 'Thank you for your inquiry - XyroSolutions',
+      html: `
+        <h2>Thank you for contacting XyroSolutions!</h2>
+        <p>Dear ${inquiry.contactInfo.name},</p>
+        <p>We have received your service inquiry and our team will review it shortly.</p>
+        <p>Here's a summary of your request:</p>
+        <ul>
+          <li><strong>Service Category:</strong> ${inquiry.category}</li>
+          <li><strong>Project Type:</strong> ${inquiry.projectType}</li>
+          <li><strong>Budget Range:</strong> ${inquiry.budget}</li>
+          <li><strong>Timeline:</strong> ${inquiry.timeline}</li>
+        </ul>
+        <p>We typically respond within 24-48 hours. In the meantime, feel free to explore our portfolio at our website.</p>
+        <p>Best regards,<br>XyroSolutions Team</p>
+      `
+    }).catch(err => console.error('Failed to send user confirmation:', err));
+    
+    return; // Response already sent
   } catch (error) {
     console.error('Create inquiry error:', error);
     res.status(400).json({
