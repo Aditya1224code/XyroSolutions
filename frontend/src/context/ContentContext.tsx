@@ -63,9 +63,9 @@ const defaultContent = {
     body: "Short reads on branding, product design, and shipping fast.",
     cta: "Read more",
     posts: [
-      { title: "How to name your product without overthinking it", excerpt: "A practical guide to finding a name that sticks." },
-      { title: "The 3-week landing page playbook", excerpt: "Ship fast without sacrificing quality." },
-      { title: "Design systems for tiny teams", excerpt: "Build consistency without the overhead." }
+      { title: "How to name your product without overthinking it", excerpt: "A practical guide to finding a name that sticks.", date: "Feb 10, 2026", readTime: "5 min read", image: "/hero_portrait_left.jpg" },
+      { title: "The 3-week landing page playbook", excerpt: "Ship fast without sacrificing quality.", date: "Feb 5, 2026", readTime: "7 min read", image: "/about_portrait_left.jpg" },
+      { title: "Design systems for tiny teams", excerpt: "Build consistency without the overhead.", date: "Jan 28, 2026", readTime: "4 min read", image: "/services_workspace_right.jpg" }
     ]
   },
   contact: {
