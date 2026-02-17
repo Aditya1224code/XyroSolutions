@@ -45,9 +45,7 @@ const allowedOrigins = [
   process.env.FRONTEND_URL || 'http://localhost:5173',
   'http://localhost:5173',
   'http://localhost:5174',
-  'http://localhost:5175',
-  'https://xyrosolutions-5cvt5g5aj-aditya-swarajs-projects.vercel.app',
-  /\.vercel\.app$/  // Allow all Vercel preview URLs
+  'http://localhost:5175'
 ];
 
 app.use(cors({
@@ -55,18 +53,23 @@ app.use(cors({
     // Allow requests with no origin (mobile apps, curl, etc.)
     if (!origin) return callback(null, true);
     
-    const isAllowed = allowedOrigins.some(allowed => {
-      if (allowed instanceof RegExp) return allowed.test(origin);
-      return allowed === origin;
-    });
-    
-    if (isAllowed) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+    // Allow all Vercel URLs
+    if (origin.endsWith('.vercel.app')) {
+      return callback(null, true);
     }
+    
+    // Check allowed origins list
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    // For debugging - log rejected origins
+    console.log('CORS rejected origin:', origin);
+    callback(new Error('Not allowed by CORS'));
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Rate limiting
