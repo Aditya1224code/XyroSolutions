@@ -7,6 +7,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../components/
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'https://xyrosolutions.onrender.com/api';
+
 interface WorkItem {
   _id: string;
   title: string;
@@ -84,8 +86,8 @@ export default function WorkSection() {
     try {
       setLoading(true);
       const url = selectedCategory === 'all' 
-        ? 'http://localhost:5000/api/work' 
-        : `http://localhost:5000/api/work/category/${selectedCategory}`;
+        ? `${API_URL}/work` 
+        : `${API_URL}/work/category/${selectedCategory}`;
       
       const response = await axios.get(url);
       setWorkItems(response.data.data || []);
