@@ -41,8 +41,31 @@ app.use(helmet({
 }));
 
 // Enable CORS
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'http://localhost:5173',
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://localhost:5175',
+  'https://xyrosolutions-5cvt5g5aj-aditya-swarajs-projects.vercel.app',
+  /\.vercel\.app$/  // Allow all Vercel preview URLs
+];
+
 app.use(cors({
-  origin: [process.env.FRONTEND_URL || 'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175', 'http://localhost:5176'],
+  origin: function(origin, callback) {
+    // Allow requests with no origin (mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    
+    const isAllowed = allowedOrigins.some(allowed => {
+      if (allowed instanceof RegExp) return allowed.test(origin);
+      return allowed === origin;
+    });
+    
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 

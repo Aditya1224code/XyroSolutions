@@ -1,5 +1,5 @@
 // API Service for NexGen Studio
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://xyrosolutions.onrender.com/api';
 
 // Types
 interface ApiResponse<T = unknown> {
