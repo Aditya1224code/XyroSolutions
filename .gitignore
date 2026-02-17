@@ -1,4 +1,6 @@
-node_modulesdist
+﻿node_modules/
+dist/
+.vite/
 .env
 .env.local
 .env.production

@@ -61,6 +61,7 @@ const defaultContent = {
   blog: {
     headline: "Latest notes",
     body: "Short reads on branding, product design, and shipping fast.",
+    cta: "Read more",
     posts: [
       { title: "How to name your product without overthinking it", excerpt: "A practical guide to finding a name that sticks." },
       { title: "The 3-week landing page playbook", excerpt: "Ship fast without sacrificing quality." },

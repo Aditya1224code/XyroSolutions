@@ -187,9 +187,14 @@ export const blogApi = {
   }
 };
 
+// Upload Response Type
+interface UploadResponse {
+  url: string;
+}
+
 // Upload API
 export const uploadApi = {
-  uploadImage: async (file: File): Promise<ApiResponse> => {
+  uploadImage: async (file: File): Promise<ApiResponse<UploadResponse>> => {
     const formData = new FormData();
     formData.append('image', file);
 
@@ -201,7 +206,7 @@ export const uploadApi = {
       },
       body: formData
     });
-    return handleResponse(response);
+    return handleResponse<UploadResponse>(response);
   },
 
   getFiles: async (): Promise<ApiResponse> => {

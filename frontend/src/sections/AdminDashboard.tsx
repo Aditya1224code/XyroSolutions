@@ -12,7 +12,6 @@ import {
   Trash2,
   ArrowLeft,
   Upload,
-  Image,
   Award,
   X,
   MessageSquare,
@@ -20,10 +19,8 @@ import {
   Mail,
   Phone,
   Building,
-  DollarSign,
   CheckCircle,
-  AlertCircle,
-  Eye
+  AlertCircle
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { uploadApi } from '../lib/api';
@@ -1424,17 +1421,17 @@ function WorkItemForm({
     
     const processedData = {
       ...formData,
-      tags: formData.tags.split(',').map(t => t.trim()).filter(t => t),
-      achievements: formData.achievements.split('\n').map(a => a.trim()).filter(a => a),
+      tags: formData.tags.split(',').map((t: string) => t.trim()).filter((t: string) => t),
+      achievements: formData.achievements.split('\n').map((a: string) => a.trim()).filter((a: string) => a),
       links: formData.links
         .split('\n')
-        .map(l => l.trim())
-        .filter(l => l)
-        .map(l => {
+        .map((l: string) => l.trim())
+        .filter((l: string) => l)
+        .map((l: string) => {
           const [title, url] = l.split('|');
           return { title: title?.trim() || '', url: url?.trim() || '' };
         })
-        .filter(l => l.title && l.url)
+        .filter((l: { title: string; url: string }) => l.title && l.url)
     };
     
     onSubmit(processedData);
@@ -1814,17 +1811,17 @@ function ServiceItemForm({
     
     const processedData = {
       ...formData,
-      features: formData.features.split('\n').map(f => f.trim()).filter(f => f),
-      tags: formData.tags.split(',').map(t => t.trim()).filter(t => t),
+      features: formData.features.split('\n').map((f: string) => f.trim()).filter((f: string) => f),
+      tags: formData.tags.split(',').map((t: string) => t.trim()).filter((t: string) => t),
       links: formData.links
         .split('\n')
-        .map(l => l.trim())
-        .filter(l => l)
-        .map(l => {
+        .map((l: string) => l.trim())
+        .filter((l: string) => l)
+        .map((l: string) => {
           const [title, url] = l.split('|');
           return { title: title?.trim() || '', url: url?.trim() || '' };
         })
-        .filter(l => l.title && l.url)
+        .filter((l: { title: string; url: string }) => l.title && l.url)
     };
     
     onSubmit(processedData);

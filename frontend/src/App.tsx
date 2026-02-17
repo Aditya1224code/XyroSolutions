@@ -3,7 +3,6 @@ import { Toaster } from 'sonner';
 import Navigation from './components/Navigation';
 import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
-import ServicesSection from './sections/ServicesSection';
 import PortfolioSection from './sections/PortfolioSection';
 import WorkPage from './sections/WorkPage';
 import ServicesPage from './sections/ServicesPage';
