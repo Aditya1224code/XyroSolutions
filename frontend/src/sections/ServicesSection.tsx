@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ChevronRight, Code, Smartphone, Brain, Users, Palette, Archive, Cpu } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import { motion } from 'framer-motion';
@@ -75,6 +76,15 @@ const serviceCategories: ServiceCategory[] = [
 ];
 
 export default function ServicesSection({ onStartInquiry }: ServicesSectionProps) {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const handleCategoryClick = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    if (onStartInquiry) {
+      onStartInquiry(categoryId);
+    }
+  };
+
   return (
     <section className="py-20 px-6 lg:px-12 bg-[#F6F6F2]">
       <div className="w-full max-w-7xl mx-auto">
@@ -101,8 +111,12 @@ export default function ServicesSection({ onStartInquiry }: ServicesSectionProps
                 whileTap={{ scale: 0.98 }}
               >
                 <Card
-                  className={`p-6 cursor-pointer transition-all duration-300 ${category.bgColor}`}
-                  onClick={() => onStartInquiry && onStartInquiry(category.id)}
+                  className={`p-6 cursor-pointer transition-all duration-300 ${category.bgColor} border-2 ${
+                    selectedCategory === category.id 
+                      ? 'border-blue-800 ring-2 ring-blue-800/30' 
+                      : 'border-transparent'
+                  }`}
+                  onClick={() => handleCategoryClick(category.id)}
                 >
                   <div className="flex items-start gap-4">
                     <div className={`p-3 rounded-lg ${category.color} bg-white/80`}>

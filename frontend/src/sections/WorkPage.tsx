@@ -1,11 +1,58 @@
-import { ArrowLeft } from 'lucide-react';
-import WorkSection from './WorkSection';
+import { ArrowLeft, Award, Users, Trophy, Zap, ChevronRight } from 'lucide-react';
+import { Card } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { motion } from 'framer-motion';
+
+interface WorkCategory {
+  id: 'sih-alumni' | 'amity-innovation' | 'hackathons' | 'cybercubs';
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  color: string;
+  bgColor: string;
+}
+
+const workCategories: WorkCategory[] = [
+  {
+    id: 'sih-alumni',
+    title: 'SIH Alumni',
+    description: 'Smart India Hackathon participation and achievements',
+    icon: Award,
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-50 hover:bg-blue-100'
+  },
+  {
+    id: 'amity-innovation',
+    title: 'Amity Innovation Cell',
+    description: 'Affiliated projects and collaborations with Amity Innovation Cell',
+    icon: Users,
+    color: 'text-green-600',
+    bgColor: 'bg-green-50 hover:bg-green-100'
+  },
+  {
+    id: 'hackathons',
+    title: 'Hackathon Projects',
+    description: 'Various hackathon participations and winning projects',
+    icon: Zap,
+    color: 'text-purple-600',
+    bgColor: 'bg-purple-50 hover:bg-purple-100'
+  },
+  {
+    id: 'cybercubs',
+    title: 'Cybercubs Winner',
+    description: 'Cybersecurity competition achievements and recognitions',
+    icon: Trophy,
+    color: 'text-amber-600',
+    bgColor: 'bg-amber-50 hover:bg-amber-100'
+  }
+];
 
 interface WorkPageProps {
   onBackToHome: () => void;
+  onSelectCategory?: (category: string) => void;
 }
 
-export default function WorkPage({ onBackToHome }: WorkPageProps) {
+export default function WorkPage({ onBackToHome, onSelectCategory }: WorkPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
       {/* Header */}
@@ -46,9 +93,48 @@ export default function WorkPage({ onBackToHome }: WorkPageProps) {
         </div>
       </div>
 
-      {/* Work Content */}
-      <div className="pt-0">
-        <WorkSection />
+      {/* Category Selection Grid */}
+      <div className="px-6 lg:px-12 py-12 max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            Select a Category
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Choose a category to explore our projects and achievements
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {workCategories.map((category, index) => {
+            const Icon = category.icon;
+            
+            return (
+              <motion.div
+                key={category.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card
+                  className={`p-6 cursor-pointer transition-all duration-300 ${category.bgColor} border-2 border-transparent hover:border-blue-800 hover:shadow-lg h-full`}
+                  onClick={() => onSelectCategory && onSelectCategory(category.id)}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <Icon className={`h-10 w-10 ${category.color}`} />
+                    <Badge variant="secondary" className="text-xs">
+                      View
+                    </Badge>
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2 text-lg">{category.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4">{category.description}</p>
+                  <div className="flex items-center text-blue-600 text-sm font-medium">
+                    View Projects <ChevronRight className="h-4 w-4 ml-1" />
+                  </div>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
