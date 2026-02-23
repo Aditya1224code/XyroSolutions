@@ -113,7 +113,7 @@ export default function ServicesSection({ onStartInquiry }: ServicesSectionProps
                 <Card
                   className={`p-6 cursor-pointer transition-all duration-300 ${category.bgColor} border-2 ${
                     selectedCategory === category.id 
-                      ? 'border-blue-800 ring-2 ring-blue-800/30' 
+                      ? 'border-green-800 ring-2 ring-green-800/30' 
                       : 'border-transparent'
                   }`}
                   onClick={() => handleCategoryClick(category.id)}
