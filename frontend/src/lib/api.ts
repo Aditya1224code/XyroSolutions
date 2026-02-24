@@ -1,4 +1,4 @@
-// API Service for NexGen Studio
+// API Service for XyroSolutions
 const API_URL = import.meta.env.VITE_API_URL || 'https://xyrosolutions.onrender.com/api';
 
 // Types
@@ -29,7 +29,7 @@ interface ContactFormData {
 
 // Helper function to get auth headers
 const getAuthHeaders = (): HeadersInit => {
-  const token = localStorage.getItem('nexgen-token');
+  const token = localStorage.getItem('xyro-token');
   return {
     'Content-Type': 'application/json',
     ...(token && { Authorization: `Bearer ${token}` })
@@ -64,14 +64,14 @@ export const authApi = {
     
     // Backend returns token directly on data object, not nested in data.data
     if (data.success && data.token) {
-      localStorage.setItem('nexgen-token', data.token);
+      localStorage.setItem('xyro-token', data.token);
     }
     
     return data;
   },
 
   logout: () => {
-    localStorage.removeItem('nexgen-token');
+    localStorage.removeItem('xyro-token');
   },
 
   getMe: async (): Promise<ApiResponse> => {
@@ -82,7 +82,7 @@ export const authApi = {
   },
 
   isAuthenticated: (): boolean => {
-    return !!localStorage.getItem('nexgen-token');
+    return !!localStorage.getItem('xyro-token');
   }
 };
 
@@ -198,7 +198,7 @@ export const uploadApi = {
     const formData = new FormData();
     formData.append('image', file);
 
-    const token = localStorage.getItem('nexgen-token');
+    const token = localStorage.getItem('xyro-token');
     const response = await fetch(`${API_URL}/upload`, {
       method: 'POST',
       headers: {

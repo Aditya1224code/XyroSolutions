@@ -96,7 +96,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
   const fetchInquiries = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('nexgen-token');
+      const token = localStorage.getItem('xyro-token');
       const response = await axios.get(`${API_URL}/service-inquiries`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -117,7 +117,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
 
   const updateInquiryStatus = async (id: string, status: string, priority?: string, adminNotes?: string) => {
     try {
-      const token = localStorage.getItem('nexgen-token');
+      const token = localStorage.getItem('xyro-token');
       await axios.put(`${API_URL}/service-inquiries/${id}`, 
         { status, priority, adminNotes },
         { headers: { Authorization: `Bearer ${token}` } }
@@ -132,7 +132,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
   const deleteInquiry = async (id: string) => {
     if (!confirm('Are you sure you want to delete this inquiry?')) return;
     try {
-      const token = localStorage.getItem('nexgen-token');
+      const token = localStorage.getItem('xyro-token');
       await axios.delete(`${API_URL}/service-inquiries/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -159,7 +159,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
 
   const createWorkItem = async (workData: any) => {
     try {
-      const token = localStorage.getItem('nexgen-token');
+      const token = localStorage.getItem('xyro-token');
       if (!token) {
         toast.error('Please login again');
         return;
@@ -182,7 +182,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
 
   const updateWorkItem = async (id: string, workData: any) => {
     try {
-      const token = localStorage.getItem('nexgen-token');
+      const token = localStorage.getItem('xyro-token');
       if (!token) {
         toast.error('Please login again');
         return;
@@ -209,7 +209,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
     if (!confirm('Are you sure you want to delete this work item?')) return;
     
     try {
-      const token = localStorage.getItem('nexgen-token');
+      const token = localStorage.getItem('xyro-token');
       if (!token) {
         toast.error('Please login again');
         return;
@@ -245,7 +245,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
 
   const createServiceItem = async (serviceData: any) => {
     try {
-      const token = localStorage.getItem('nexgen-token');
+      const token = localStorage.getItem('xyro-token');
       if (!token) {
         toast.error('Please login again');
         return;
@@ -268,7 +268,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
 
   const updateServiceItem = async (id: string, serviceData: any) => {
     try {
-      const token = localStorage.getItem('nexgen-token');
+      const token = localStorage.getItem('xyro-token');
       if (!token) {
         toast.error('Please login again');
         return;
@@ -295,7 +295,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
     if (!confirm('Are you sure you want to delete this service item?')) return;
     
     try {
-      const token = localStorage.getItem('nexgen-token');
+      const token = localStorage.getItem('xyro-token');
       if (!token) {
         toast.error('Please login again');
         return;
@@ -384,7 +384,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
       {/* Mobile Header */}
       <div className="md:hidden bg-dark text-white p-4 flex items-center justify-between sticky top-0 z-40">
         <div>
-          <h1 className="font-display font-bold text-lg">NexGen Studio</h1>
+          <h1 className="font-display font-bold text-lg">XyroSolutions</h1>
           <p className="text-white/50 text-xs">Admin Dashboard</p>
         </div>
         <button
@@ -411,7 +411,7 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
         transition-transform duration-300 ease-in-out
       `}>
         <div className="hidden md:block p-6 border-b border-white/10">
-          <h1 className="font-display font-bold text-xl">NexGen Studio</h1>
+          <h1 className="font-display font-bold text-xl">XyroSolutions</h1>
           <p className="text-white/50 text-sm">Admin Dashboard</p>
         </div>
 

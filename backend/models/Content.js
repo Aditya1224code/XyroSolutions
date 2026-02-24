@@ -6,7 +6,7 @@ const contentSchema = new mongoose.Schema({
     headline: { type: String, default: "CREATIVE / STUDIO / BUILT FOR SMALL BRANDS" },
     subheadline: { type: String, default: "We design identities, sites, and campaigns that turn small teams into memorable brands." },
     cta: { type: String, default: "Explore work" },
-    microLabel: { type: String, default: "NEXGEN STUDIO — 2026" }
+    microLabel: { type: String, default: "XYROSOLUTIONS — 2026" }
   },
   
   // About Section
@@ -61,7 +61,7 @@ const contentSchema = new mongoose.Schema({
       label: { type: String }
     }],
     testimonial: {
-      quote: { type: String, default: "NexGen turned our rough idea into a brand we're proud to show investors—in under a month." },
+      quote: { type: String, default: "XyroSolutions turned our rough idea into a brand we're proud to show investors—in under a month." },
       author: { type: String, default: "Ava R., Founder, Lumen Coffee" }
     }
   },
@@ -78,7 +78,7 @@ const contentSchema = new mongoose.Schema({
     headline: { type: String, default: "Ready when you are." },
     body: { type: String, default: "Tell us what you're building. We'll reply within 2 business days." },
     cta: { type: String, default: "Send message" },
-    email: { type: String, default: "hello@nexgen.studio" },
+    email: { type: String, default: "hello@xyrosolutions.tech" },
     location: { type: String, default: "Based everywhere / UTC±2" },
     form: {
       emailPlaceholder: { type: String, default: "you@company.com" },

@@ -27,7 +27,7 @@ const blogPostSchema = new mongoose.Schema({
   },
   author: {
     type: String,
-    default: 'NexGen Studio'
+    default: 'XyroSolutions'
   },
   tags: [{
     type: String

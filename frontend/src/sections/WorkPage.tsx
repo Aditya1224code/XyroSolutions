@@ -71,7 +71,7 @@ export default function WorkPage({ onBackToHome, onSelectCategory }: WorkPagePro
             </div>
             
             <div className="font-display font-bold text-lg tracking-tight text-dark">
-              NexGen Studio - Work
+              XyroSolutions - Work
             </div>
           </div>
         </nav>

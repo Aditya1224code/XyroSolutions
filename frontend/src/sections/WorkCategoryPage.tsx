@@ -119,7 +119,7 @@ export default function WorkCategoryPage({ category, onBackToWork, onGoHome }: W
           </div>
           
           <div className="font-display font-bold text-lg tracking-tight text-dark">
-            NexGen Studio - {categoryData?.title || 'Work'}
+            XyroSolutions - {categoryData?.title || 'Work'}
           </div>
 
           <Button variant="ghost" onClick={onGoHome} className="text-dark hover:text-primary">

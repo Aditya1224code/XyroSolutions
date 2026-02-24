@@ -7,7 +7,7 @@ const defaultContent = {
     headline: "CREATIVE / STUDIO / BUILT FOR SMALL BRANDS",
     subheadline: "We design identities, sites, and campaigns that turn small teams into memorable brands.",
     cta: "Explore work",
-    microLabel: "NEXGEN STUDIO — 2026"
+    microLabel: "XYROSOLUTIONS — 2026"
   },
   about: {
     eyebrow: "WHO WE ARE",
@@ -54,7 +54,7 @@ const defaultContent = {
       { value: "100%", label: "Remote-friendly process" }
     ],
     testimonial: {
-      quote: "NexGen turned our rough idea into a brand we're proud to show investors—in under a month.",
+      quote: "XyroSolutions turned our rough idea into a brand we're proud to show investors—in under a month.",
       author: "Ava R., Founder, Lumen Coffee"
     }
   },
@@ -72,7 +72,7 @@ const defaultContent = {
     headline: "Ready when you are.",
     body: "Tell us what you're building. We'll reply within 2 business days.",
     cta: "Get in touch",
-    email: "hello@nexgen.studio",
+    email: "hello@xyrosolutions.tech",
     location: "Based everywhere / UTC±2",
     form: {
       emailPlaceholder: "you@company.com",
@@ -256,7 +256,7 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
       console.error('Failed to fetch content:', err);
       setError(err instanceof Error ? err.message : 'Failed to load content');
       // Use cached content from localStorage as fallback
-      const cached = localStorage.getItem('nexgen-content');
+      const cached = localStorage.getItem('xyro-content');
       if (cached) {
         setContent(JSON.parse(cached));
       }
@@ -273,7 +273,7 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
   // Cache content locally
   useEffect(() => {
     if (!loading) {
-      localStorage.setItem('nexgen-content', JSON.stringify(content));
+      localStorage.setItem('xyro-content', JSON.stringify(content));
     }
   }, [content, loading]);
 

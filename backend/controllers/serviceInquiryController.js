@@ -18,7 +18,7 @@ export const createInquiry = async (req, res) => {
     // Send emails in background (non-blocking)
     // Send notification email to admin
     sendEmail({
-      to: process.env.ADMIN_EMAIL || 'admin@nexgenstudio.com',
+      to: process.env.ADMIN_EMAIL || 'admin@xyrosolutions.tech',
       subject: `New Service Inquiry: ${inquiry.category}`,
       html: `
         <h2>New Service Inquiry Received</h2>

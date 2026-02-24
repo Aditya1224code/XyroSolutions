@@ -25,7 +25,7 @@ export default function ServicesPage({ onBackToHome, onStartInquiry }: ServicesP
             </div>
             
             <div className="font-display font-bold text-lg tracking-tight text-dark">
-              NexGen Studio - Services
+              XyroSolutions - Services
             </div>
           </div>
         </nav>

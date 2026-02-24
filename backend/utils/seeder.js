@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URI);
 const defaultContent = {
   hero: {
     headline: "We bring brands to life.",
-    subheadline: "NexGen Studio is a creative agency specializing in brand identity, web design, and digital campaigns for ambitious startups and growing businesses."
+    subheadline: "XyroSolutions is a creative agency specializing in brand identity, web design, and digital campaigns for ambitious startups and growing businesses."
   },
   about: {
     title: "About Us",
@@ -57,7 +57,7 @@ const defaultContent = {
     ]
   },
   contact: {
-    email: "hello@nexgenstudio.com",
+    email: "hello@xyrosolutions.tech",
     phone: "+1 (555) 123-4567",
     address: "123 Creative Ave, San Francisco, CA 94102"
   },

@@ -137,7 +137,7 @@ export default function ContactSection() {
           style={{ transitionDelay: '500ms' }}
         >
           <p className="text-white/40 text-sm">
-            © NexGen Studio — 2026
+            © XyroSolutions — 2026
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-white/40 hover:text-lime transition-colors">

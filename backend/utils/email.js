@@ -41,7 +41,7 @@ export const sendContactNotification = async (contact) => {
         <p><strong>Submitted at:</strong> ${new Date().toLocaleString()}</p>
       </div>
       <p style="color: #666; font-size: 12px; margin-top: 20px;">
-        This email was sent from the NexGen Studio contact form.
+        This email was sent from the XyroSolutions contact form.
       </p>
     </div>
   `;

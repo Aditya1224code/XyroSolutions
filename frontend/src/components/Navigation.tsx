@@ -57,7 +57,7 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
             onClick={() => onPageChange('home')}
             className="font-display font-bold text-lg tracking-tight text-dark"
           >
-            NexGen Studio
+            XyroSolutions
           </button>
 
           {/* Desktop Navigation */}
