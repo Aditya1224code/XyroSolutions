@@ -78,7 +78,7 @@ const contentSchema = new mongoose.Schema({
     headline: { type: String, default: "Ready when you are." },
     body: { type: String, default: "Tell us what you're building. We'll reply within 2 business days." },
     cta: { type: String, default: "Send message" },
-    email: { type: String, default: "hello@xyrosolutions.tech" },
+    email: { type: String, default: "xyrosolutions1@gmail.com" },
     location: { type: String, default: "Based everywhere / UTC±2" },
     form: {
       emailPlaceholder: { type: String, default: "you@company.com" },

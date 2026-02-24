@@ -57,7 +57,7 @@ const defaultContent = {
     ]
   },
   contact: {
-    email: "hello@xyrosolutions.tech",
+    email: "xyrosolutions1@gmail.com",
     phone: "+1 (555) 123-4567",
     address: "123 Creative Ave, San Francisco, CA 94102"
   },

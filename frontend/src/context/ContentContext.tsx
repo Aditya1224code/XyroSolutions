@@ -72,7 +72,7 @@ const defaultContent = {
     headline: "Ready when you are.",
     body: "Tell us what you're building. We'll reply within 2 business days.",
     cta: "Get in touch",
-    email: "hello@xyrosolutions.tech",
+    email: "xyrosolutions1@gmail.com",
     location: "Based everywhere / UTC±2",
     form: {
       emailPlaceholder: "you@company.com",
