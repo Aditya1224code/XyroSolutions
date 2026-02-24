@@ -365,8 +365,8 @@ export default function ServiceInquiryPage({ category: initialCategory, onBackTo
                     onClick={() => setFormData(prev => ({ ...prev, projectType: type.value }))}
                     className={`p-5 rounded-xl border-2 text-left transition-all ${
                       formData.projectType === type.value
-                        ? 'border-lime bg-lime/10'
-                        : 'border-gray-200 hover:border-lime/50'
+                        ? 'border-blue-900 bg-blue-900/10 ring-2 ring-blue-900/30'
+                        : 'border-gray-200 hover:border-blue-900/50'
                     }`}
                   >
                     <h3 className="font-display font-bold text-dark">{type.label}</h3>
@@ -459,8 +459,8 @@ export default function ServiceInquiryPage({ category: initialCategory, onBackTo
                     onClick={() => setFormData(prev => ({ ...prev, timeline: option.value }))}
                     className={`p-5 rounded-xl border-2 text-left transition-all ${
                       formData.timeline === option.value
-                        ? 'border-lime bg-lime/10'
-                        : 'border-gray-200 hover:border-lime/50'
+                        ? 'border-blue-900 bg-blue-900/10 ring-2 ring-blue-900/30'
+                        : 'border-gray-200 hover:border-blue-900/50'
                     }`}
                   >
                     <h3 className="font-display font-bold text-dark">{option.label}</h3>
@@ -487,17 +487,17 @@ export default function ServiceInquiryPage({ category: initialCategory, onBackTo
                     onClick={() => handleFeatureToggle(feature.value)}
                     className={`p-4 rounded-xl border-2 text-left transition-all flex items-center gap-3 ${
                       formData.features.includes(feature.value)
-                        ? 'border-lime bg-lime/10'
-                        : 'border-gray-200 hover:border-lime/50'
+                        ? 'border-blue-900 bg-blue-900/10 ring-2 ring-blue-900/30'
+                        : 'border-gray-200 hover:border-blue-900/50'
                     }`}
                   >
                     <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center ${
                       formData.features.includes(feature.value)
-                        ? 'border-lime bg-lime'
+                        ? 'border-blue-900 bg-blue-900'
                         : 'border-gray-300'
                     }`}>
                       {formData.features.includes(feature.value) && (
-                        <Check size={14} className="text-dark" />
+                        <Check size={14} className="text-white" />
                       )}
                     </div>
                     <span className="font-medium text-dark">{feature.label}</span>
