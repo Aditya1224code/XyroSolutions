@@ -18,7 +18,7 @@ const seedWorkData = async () => {
         description: 'Developed an AI-powered healthcare diagnostics platform that uses machine learning to analyze medical images and provide preliminary diagnosis recommendations. The solution won first place in the healthcare category of Smart India Hackathon 2023, competing against over 500 teams nationwide.\n\nOur team created a comprehensive platform that includes:\n- Real-time medical image analysis using computer vision\n- Patient data management system\n- Predictive analytics for early disease detection\n- Mobile app for healthcare professionals',
         shortDescription: 'AI-powered healthcare diagnostics platform that won first place in SIH 2023 healthcare category.',
         category: 'sih-alumni',
-        image: 'https://res.cloudinary.com/dr4w6ordx/image/upload/v1000000000/nexgen-studio/sih-healthcare.jpg',
+        image: 'https://res.cloudinary.com/dr4w6ordx/image/upload/v1000000000/nexgen-studio/group-photo.jpg',
         tags: ['Artificial Intelligence', 'Healthcare', 'Computer Vision', 'React', 'Python', 'TensorFlow'],
         achievements: [
           'First place in Healthcare Innovation category',

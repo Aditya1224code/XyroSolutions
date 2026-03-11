@@ -92,8 +92,8 @@ export default function HeroSection() {
             style={{ transitionDelay: '200ms' }}
           >
             <img
-              src="/hero_portrait_left.jpg"
-              alt="Creative professional"
+              src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1000000000/nexgen-studio/group-photo.jpg"
+              alt="Our team"
               className="w-full h-full object-cover img-mono"
             />
           </div>
@@ -122,8 +122,8 @@ export default function HeroSection() {
           style={{ transitionDelay: '200ms' }}
         >
           <img
-            src="/hero_portrait_left.jpg"
-            alt="Creative professional"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1000000000/nexgen-studio/group-photo.jpg"
+            alt="Our team"
             className="w-full h-full object-cover img-mono"
           />
         </div>
