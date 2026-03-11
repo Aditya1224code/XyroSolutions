@@ -92,7 +92,7 @@ export default function HeroSection() {
             style={{ transitionDelay: '200ms' }}
           >
             <img
-              src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1000000000/nexgen-studio/group-photo.jpg"
+              src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773202634/group-photo.png"
               alt="Our team"
               className="w-full h-full object-cover img-mono"
             />
@@ -122,7 +122,7 @@ export default function HeroSection() {
           style={{ transitionDelay: '200ms' }}
         >
           <img
-            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1000000000/nexgen-studio/group-photo.jpg"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773202634/group-photo.png"
             alt="Our team"
             className="w-full h-full object-cover img-mono"
           />
