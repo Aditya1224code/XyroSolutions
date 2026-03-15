@@ -52,7 +52,7 @@ const defaultContent = {
   team: {
     members: [
       { name: "Alex Chen", role: "Creative Director", image: "/hero_portrait_left.jpg" },
-      { name: "Sam Rivera", role: "Lead Designer", image: "/about_portrait_left.jpg" },
+      { name: "Sam Rivera", role: "Lead Designer", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1773596421/f48bf7a6-fd0e-4e29-89fb-5d425336f46b_ukczim.png" },
       { name: "Jordan Park", role: "Developer", image: "/services_workspace_right.jpg" }
     ]
   },

@@ -87,7 +87,7 @@ export default function AboutSection() {
           style={{ transitionDelay: '200ms' }}
         >
           <img
-            src="/about_portrait_left.jpg"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773596421/f48bf7a6-fd0e-4e29-89fb-5d425336f46b_ukczim.png"
             alt="Team member"
             className="w-full h-full object-cover img-mono"
           />
@@ -128,7 +128,7 @@ export default function AboutSection() {
           style={{ transitionDelay: '200ms' }}
         >
           <img
-            src="/about_portrait_left.jpg"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773596421/f48bf7a6-fd0e-4e29-89fb-5d425336f46b_ukczim.png"
             alt="Team member"
             className="w-full h-full object-cover img-mono"
           />

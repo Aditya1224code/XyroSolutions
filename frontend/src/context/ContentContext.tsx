@@ -64,7 +64,7 @@ const defaultContent = {
     cta: "Read more",
     posts: [
       { title: "How to name your product without overthinking it", excerpt: "A practical guide to finding a name that sticks.", date: "Feb 10, 2026", readTime: "5 min read", image: "/hero_portrait_left.jpg" },
-      { title: "The 3-week landing page playbook", excerpt: "Ship fast without sacrificing quality.", date: "Feb 5, 2026", readTime: "7 min read", image: "/about_portrait_left.jpg" },
+      { title: "The 3-week landing page playbook", excerpt: "Ship fast without sacrificing quality.", date: "Feb 5, 2026", readTime: "7 min read", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1773596421/f48bf7a6-fd0e-4e29-89fb-5d425336f46b_ukczim.png" },
       { title: "Design systems for tiny teams", excerpt: "Build consistency without the overhead.", date: "Jan 28, 2026", readTime: "4 min read", image: "/services_workspace_right.jpg" }
     ]
   },
@@ -83,7 +83,7 @@ const defaultContent = {
   team: {
     members: [
       { name: "Alex Chen", role: "Creative Director", image: "/hero_portrait_left.jpg" },
-      { name: "Sam Rivera", role: "Lead Designer", image: "/about_portrait_left.jpg" },
+      { name: "Sam Rivera", role: "Lead Designer", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1773596421/f48bf7a6-fd0e-4e29-89fb-5d425336f46b_ukczim.png" },
       { name: "Jordan Park", role: "Developer", image: "/services_workspace_right.jpg" }
     ]
   }
