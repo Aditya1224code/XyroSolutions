@@ -97,15 +97,15 @@ export default function HeroSection() {
               className="w-full h-full object-cover img-mono"
             />
           </div>
-          <div 
+          <div
             className={`h-48 overflow-hidden rounded-lg transition-all duration-1000 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
             }`}
             style={{ transitionDelay: '300ms' }}
           >
             <img
-              src="/hero_workspace_right.jpg"
-              alt="Workspace"
+              src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773202634/group-photo.png"
+              alt="Our team"
               className="w-full h-full object-cover img-mono"
             />
           </div>
@@ -129,15 +129,15 @@ export default function HeroSection() {
         </div>
 
         {/* Right Photo Card */}
-        <div 
+        <div
           className={`absolute right-[6vw] top-[12vh] w-[38vw] h-[76vh] z-[2] overflow-hidden transition-all duration-1000 ${
             loaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
           }`}
           style={{ transitionDelay: '300ms' }}
         >
           <img
-            src="/hero_workspace_right.jpg"
-            alt="Workspace"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773202634/group-photo.png"
+            alt="Our team"
             className="w-full h-full object-cover img-mono"
           />
         </div>
