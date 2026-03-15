@@ -104,8 +104,8 @@ export default function HeroSection() {
             style={{ transitionDelay: '300ms' }}
           >
             <img
-              src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773596421/f48bf7a6-fd0e-4e29-89fb-5d425336f46b_ukczim.png"
-              alt="Team member at monument"
+              src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773597157/istockphoto-1393912474-612x612_fdxk5q.jpg"
+              alt="Team member"
               className="w-full h-full object-cover img-mono"
             />
           </div>
