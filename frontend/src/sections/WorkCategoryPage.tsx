@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from 'react';
-import { ArrowLeft, ExternalLink, Award, Users, Trophy, Zap, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Award, Users, Trophy, Zap, ChevronRight, Monitor } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
@@ -15,7 +16,7 @@ interface WorkItem {
   subtitle?: string;
   description: string;
   shortDescription?: string;
-  category: 'sih-alumni' | 'amity-innovation' | 'hackathons' | 'cybercubs' | 'other';
+  category: 'sih-alumni' | 'amity-innovation' | 'hackathons' | 'cybercubs' | 'web-development' | 'other';
   image?: string;
   tags?: string[];
   achievements?: string[];
@@ -28,7 +29,7 @@ interface WorkItem {
 }
 
 interface WorkCategory {
-  id: 'sih-alumni' | 'amity-innovation' | 'hackathons' | 'cybercubs';
+  id: 'sih-alumni' | 'amity-innovation' | 'hackathons' | 'cybercubs' | 'web-development';
   title: string;
   description: string;
   icon: React.ElementType;
@@ -68,6 +69,14 @@ const workCategories: WorkCategory[] = [
     icon: Trophy,
     color: 'text-amber-600',
     bgColor: 'bg-amber-50'
+  },
+  {
+    id: 'web-development',
+    title: 'Web Development',
+    description: 'Full-stack web applications and responsive website projects',
+    icon: Monitor,
+    color: 'text-indigo-600',
+    bgColor: 'bg-indigo-50'
   }
 ];
 

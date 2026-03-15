@@ -26,7 +26,7 @@ const workSchema = new mongoose.Schema({
   category: {
     type: String,
     required: [true, 'Work category is required'],
-    enum: ['sih-alumni', 'amity-innovation', 'hackathons', 'cybercubs', 'other'],
+    enum: ['sih-alumni', 'amity-innovation', 'hackathons', 'cybercubs', 'web-development', 'other'],
     trim: true
   },
   image: {
