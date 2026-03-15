@@ -1423,6 +1423,7 @@ function WorkItemForm({
     { value: 'amity-innovation', label: 'Amity Innovation Cell' },
     { value: 'hackathons', label: 'Hackathon Projects' },
     { value: 'cybercubs', label: 'Cybercubs Winner' },
+    { value: 'web-development', label: 'Web Development' },
     { value: 'other', label: 'Other' }
   ];
 
@@ -1687,6 +1688,7 @@ function WorkItemCard({
     'amity-innovation': 'Amity Innovation Cell',
     'hackathons': 'Hackathon Projects',
     'cybercubs': 'Cybercubs Winner',
+    'web-development': 'Web Development',
     'other': 'Other'
   };
 
