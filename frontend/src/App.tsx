@@ -4,7 +4,6 @@ import Navigation from './components/Navigation';
 import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
 import PortfolioSection from './sections/PortfolioSection';
-import WorkSection from './sections/WorkSection';
 import WorkPage from './sections/WorkPage';
 import WorkCategoryPage from './sections/WorkCategoryPage';
 import ServicesPage from './sections/ServicesPage';
@@ -58,7 +57,6 @@ function MainWebsite({
         <HeroSection />
         <AboutSection />
         <PortfolioSection />
-        <WorkSection />
         <ProcessSection />
         <ResultsSection />
         <BlogSection />

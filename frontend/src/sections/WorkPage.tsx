@@ -1,10 +1,10 @@
-import { ArrowLeft, Award, Users, Trophy, Zap, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Award, Users, Trophy, Zap, ChevronRight, Monitor } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { motion } from 'framer-motion';
 
 interface WorkCategory {
-  id: 'sih-alumni' | 'amity-innovation' | 'hackathons' | 'cybercubs';
+  id: 'sih-alumni' | 'amity-innovation' | 'hackathons' | 'cybercubs' | 'web-development';
   title: string;
   description: string;
   icon: React.ElementType;
@@ -44,6 +44,14 @@ const workCategories: WorkCategory[] = [
     icon: Trophy,
     color: 'text-amber-600',
     bgColor: 'bg-amber-50 hover:bg-amber-100'
+  },
+  {
+    id: 'web-development',
+    title: 'Web Development',
+    description: 'Full-stack web applications and responsive website projects',
+    icon: Monitor,
+    color: 'text-indigo-600',
+    bgColor: 'bg-indigo-50 hover:bg-indigo-100'
   }
 ];
 
