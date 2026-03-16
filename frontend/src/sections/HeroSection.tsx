@@ -115,9 +115,97 @@ export default function HeroSection() {
 
       {/* Desktop Layout - Show on ALL devices */}
       <div className="min-h-screen relative">
-        {/* Left Photo Card */}
+        {/* Mobile Layout: Single image at top, content below */}
+        <div className="md:hidden flex flex-col h-screen">
+          {/* Mobile Image - takes top 45% */}
+          <div
+            className={`relative w-full h-[45vh] overflow-hidden transition-all duration-800 ${
+              loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+            }`}
+          >
+            <img
+              src={heroImages.primary}
+              alt="Our team"
+              className="w-full h-full object-cover img-mono"
+            />
+            {/* Gradient fade at bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#F6F6F2] to-transparent" />
+          </div>
+
+          {/* Mobile Content */}
+          <div className="flex-1 flex flex-col justify-center px-4 -mt-8">
+            <div
+              className={`rounded-xl p-4 transition-all duration-2000 ${
+                loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              } ${
+                boxVisible
+                  ? 'bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-200'
+                  : 'bg-transparent shadow-none border-transparent'
+              }`}
+            >
+              <p
+                className={`font-mono text-[10px] tracking-[0.12em] mb-2 transition-all duration-600 ${
+                  loaded ? 'opacity-100' : 'opacity-0'
+                } ${textFloating ? 'text-dark' : 'text-gray-600'}`}
+              >
+                {content.hero.microLabel}
+              </p>
+
+              <h1
+                className={`font-display font-bold text-3xl leading-[0.95] tracking-tight uppercase mb-3 transition-all duration-1000 text-dark`}
+              >
+                {content.hero.headline.split(' / ').map((line, i) => (
+                  <span
+                    key={i}
+                    className={`block transition-all duration-600 ${
+                      loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                    style={{ transitionDelay: `${200 + (i * 100)}ms` }}
+                  >
+                    {line}
+                  </span>
+                ))}
+              </h1>
+
+              <p
+                className={`text-sm text-gray-700 mb-4 transition-all duration-600 ${
+                  loaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ transitionDelay: '500ms' }}
+              >
+                {content.hero.subheadline}
+              </p>
+
+              <button
+                onClick={scrollToWork}
+                className={`group btn-primary inline-flex items-center gap-2 text-sm px-5 py-2.5 transition-all duration-600 ${
+                  loaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ transitionDelay: '700ms' }}
+              >
+                <span>{content.hero.cta}</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Scroll Indicator */}
+          <div
+            className={`pb-4 flex justify-center transition-all duration-800 ${
+              loaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ transitionDelay: '900ms' }}
+            onClick={scrollToWork}
+          >
+            <div className="w-5 h-8 border-2 border-dark rounded-full flex justify-center pt-1.5">
+              <div className="w-0.5 h-1.5 bg-dark rounded-full animate-bounce" />
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop: Left Photo Card */}
         <div
-          className={`absolute left-[2vw] md:left-[6vw] top-[5vh] md:top-[10vh] w-[45vw] md:w-[34vw] h-[35vh] md:h-[80vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:rotate-1 hover:shadow-2xl ${
+          className={`hidden md:block absolute left-[6vw] top-[10vh] w-[34vw] h-[80vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:rotate-1 hover:shadow-2xl ${
             loaded ? 'opacity-100 translate-x-0 blur-0 scale-100' : 'opacity-0 -translate-x-32 blur-md scale-95'
           }`}
           style={{ transitionDelay: '100ms' }}
@@ -129,9 +217,9 @@ export default function HeroSection() {
           />
         </div>
 
-        {/* Right Photo Card */}
+        {/* Desktop: Right Photo Card */}
         <div
-          className={`absolute right-[2vw] md:right-[6vw] top-[8vh] md:top-[12vh] w-[48vw] md:w-[38vw] h-[32vh] md:h-[76vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:-rotate-1 hover:shadow-2xl ${
+          className={`hidden md:block absolute right-[6vw] top-[12vh] w-[38vw] h-[76vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:-rotate-1 hover:shadow-2xl ${
             loaded ? 'opacity-100 translate-x-0 blur-0 scale-100' : 'opacity-0 translate-x-32 blur-md scale-95'
           }`}
           style={{ transitionDelay: '200ms' }}
@@ -143,11 +231,11 @@ export default function HeroSection() {
           />
         </div>
 
-        {/* Content Overlay with disappearing text box background */}
-        <div className="absolute inset-0 flex flex-col justify-end md:justify-center px-3 md:px-[6vw] pb-16 md:pb-0 z-[5] pointer-events-none">
+        {/* Desktop Content Overlay */}
+        <div className="hidden md:flex absolute inset-0 flex-col justify-center px-[6vw] z-[5] pointer-events-none">
           <div className="max-w-4xl">
             <div
-              className={`rounded-xl md:rounded-2xl p-3 md:p-8 transition-all duration-2000 ${
+              className={`rounded-2xl p-8 transition-all duration-2000 ${
                 loaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-sm'
               } ${
                 boxVisible
@@ -160,7 +248,7 @@ export default function HeroSection() {
               }}
             >
               <p
-                className={`font-mono text-[10px] md:text-xs tracking-[0.12em] mb-2 md:mb-4 transition-all duration-600 ${
+                className={`font-mono text-xs tracking-[0.12em] mb-4 transition-all duration-600 ${
                   loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
                 } ${
                   textFloating
@@ -178,7 +266,7 @@ export default function HeroSection() {
               </p>
 
               <h1
-                className={`font-display font-bold text-2xl sm:text-3xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] md:leading-[0.92] tracking-tight uppercase mb-3 md:mb-6 transition-all duration-1000 ${
+                className={`font-display font-bold text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight uppercase mb-6 transition-all duration-1000 ${
                   textFloating
                     ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]'
                     : 'text-dark'
@@ -217,7 +305,7 @@ export default function HeroSection() {
               </h1>
 
               <p
-                className={`text-xs md:text-lg max-w-md mb-4 md:mb-8 overflow-hidden transition-all duration-1000 ${
+                className={`text-lg max-w-md mb-8 overflow-hidden transition-all duration-1000 ${
                   textFloating
                     ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
                     : 'text-gray-700'
@@ -229,7 +317,7 @@ export default function HeroSection() {
                 {content.hero.subheadline.split(' ').map((word, wordIndex) => (
                   <span
                     key={wordIndex}
-                    className={`inline-block mr-1 md:mr-2 transition-all duration-600 ${
+                    className={`inline-block mr-2 transition-all duration-600 ${
                       loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-12 blur-sm'
                     }`}
                     style={{ transitionDelay: `${800 + (wordIndex * 80)}ms` }}
@@ -241,7 +329,7 @@ export default function HeroSection() {
 
               <button
                 onClick={scrollToWork}
-                className={`group btn-primary inline-flex items-center gap-1 md:gap-2 pointer-events-auto transition-all duration-600 transform hover:scale-110 active:scale-95 text-sm md:text-base px-4 py-2 md:px-6 md:py-3 ${
+                className={`group btn-primary inline-flex items-center gap-2 pointer-events-auto transition-all duration-600 transform hover:scale-110 active:scale-95 px-6 py-3 ${
                   loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-16 blur-sm'
                 } ${
                   textFloating
@@ -256,22 +344,22 @@ export default function HeroSection() {
                 <span className="transition-all duration-300 group-hover:tracking-wider">
                   {content.hero.cta}
                 </span>
-                <ArrowRight className="w-3 h-3 md:w-[18px] md:h-[18px] transition-all duration-300 group-hover:translate-x-2 group-hover:scale-125" />
+                <ArrowRight className="w-[18px] h-[18px] transition-all duration-300 group-hover:translate-x-2 group-hover:scale-125" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Desktop Scroll Indicator */}
         <div
-          className={`absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-10 transition-all duration-800 hover:scale-125 cursor-pointer ${
+          className={`hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10 transition-all duration-800 hover:scale-125 cursor-pointer ${
             loaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'
           }`}
           style={{ transitionDelay: '1400ms' }}
           onClick={scrollToWork}
         >
-          <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-dark rounded-full flex justify-center pt-1.5 md:pt-2 transition-all duration-300 hover:border-lime hover:shadow-lg">
-            <div className="w-0.5 md:w-1 h-1.5 md:h-2 bg-dark rounded-full animate-bounce transition-all duration-300 hover:bg-lime" />
+          <div className="w-6 h-10 border-2 border-dark rounded-full flex justify-center pt-2 transition-all duration-300 hover:border-lime hover:shadow-lg">
+            <div className="w-1 h-2 bg-dark rounded-full animate-bounce transition-all duration-300 hover:bg-lime" />
           </div>
         </div>
       </div>
