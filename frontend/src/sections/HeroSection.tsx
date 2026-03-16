@@ -62,17 +62,18 @@ export default function HeroSection() {
       {/* Floating particles that appear when text becomes floating */}
       {textFloating && (
         <>
+          {/* Only show 2 particles on mobile, all 6 on larger screens */}
           <div className="absolute top-[20%] left-[15%] w-2 h-2 bg-lime rounded-full" style={{ animation: 'floatSide 6s ease-in-out infinite, sparkle 3s ease-in-out infinite' }} />
-          <div className="absolute top-[70%] right-[20%] w-1 h-1 bg-white rounded-full" style={{ animation: 'floatSide 4s ease-in-out infinite reverse, sparkle 2s ease-in-out infinite' }} />
+          <div className="hidden md:block absolute top-[70%] right-[20%] w-1 h-1 bg-white rounded-full" style={{ animation: 'floatSide 4s ease-in-out infinite reverse, sparkle 2s ease-in-out infinite' }} />
           <div className="absolute top-[40%] right-[10%] w-1.5 h-1.5 bg-lime rounded-full" style={{ animation: 'floatSide 7s ease-in-out infinite, sparkle 2.5s ease-in-out infinite 0.5s' }} />
-          <div className="absolute top-[60%] left-[25%] w-1 h-1 bg-white rounded-full" style={{ animation: 'floatSide 5s ease-in-out infinite reverse, sparkle 3.5s ease-in-out infinite 1s' }} />
-          <div className="absolute top-[30%] left-[70%] w-1 h-1 bg-lime rounded-full" style={{ animation: 'floatSide 5.5s ease-in-out infinite, sparkle 2.8s ease-in-out infinite 1.5s' }} />
-          <div className="absolute top-[80%] left-[40%] w-1.5 h-1.5 bg-white rounded-full" style={{ animation: 'floatSide 6.5s ease-in-out infinite reverse, sparkle 3.2s ease-in-out infinite 0.7s' }} />
+          <div className="hidden md:block absolute top-[60%] left-[25%] w-1 h-1 bg-white rounded-full" style={{ animation: 'floatSide 5s ease-in-out infinite reverse, sparkle 3.5s ease-in-out infinite 1s' }} />
+          <div className="hidden md:block absolute top-[30%] left-[70%] w-1 h-1 bg-lime rounded-full" style={{ animation: 'floatSide 5.5s ease-in-out infinite, sparkle 2.8s ease-in-out infinite 1.5s' }} />
+          <div className="hidden md:block absolute top-[80%] left-[40%] w-1.5 h-1.5 bg-white rounded-full" style={{ animation: 'floatSide 6.5s ease-in-out infinite reverse, sparkle 3.2s ease-in-out infinite 0.7s' }} />
         </>
       )}
       {/* Decorative Elements - Show on all devices */}
       <div
-        className={`decor-circle w-20 h-20 lg:w-40 lg:h-40 absolute left-[48%] top-[16%] z-0 transition-all duration-800 ${
+        className={`decor-circle w-12 h-12 md:w-20 md:h-20 lg:w-40 lg:h-40 absolute left-[75%] md:left-[48%] top-[8%] md:top-[16%] z-0 transition-all duration-800 ${
           loaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-0 blur-sm'
         } ${
           textFloating ? 'bg-gradient-to-br from-lime via-yellow-300 to-lime shadow-lime/50 shadow-2xl' : 'bg-lime'
@@ -83,7 +84,7 @@ export default function HeroSection() {
         }}
       />
       <div
-        className={`decor-ring w-16 h-16 lg:w-36 lg:h-36 absolute left-[44%] top-[68%] z-10 transition-all duration-800 ${
+        className={`decor-ring w-10 h-10 md:w-16 md:h-16 lg:w-36 lg:h-36 absolute left-[5%] md:left-[44%] top-[85%] md:top-[68%] z-10 transition-all duration-800 ${
           loaded ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-0 rotate-180'
         } ${
           textFloating ? 'border-white shadow-white/30 shadow-lg' : 'border-dark'
@@ -94,12 +95,12 @@ export default function HeroSection() {
         }}
       />
       <div
-        className={`absolute left-[6%] top-[6%] z-10 transition-all duration-800 hover:scale-125 hover:rotate-45 ${
+        className={`absolute left-[6%] top-[4%] md:top-[6%] z-10 transition-all duration-800 hover:scale-125 hover:rotate-45 ${
           loaded ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-0 rotate-180'
         }`}
         style={{ transitionDelay: '500ms' }}
       >
-        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" className="lg:w-8 lg:h-8">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" className="md:w-6 md:h-6 lg:w-8 lg:h-8">
           <path
             d="M16 0V32M0 16H32"
             stroke={textFloating ? "#ffffff" : "#111111"}
@@ -116,7 +117,7 @@ export default function HeroSection() {
       <div className="min-h-screen relative">
         {/* Left Photo Card */}
         <div
-          className={`absolute left-[2vw] md:left-[6vw] top-[10vh] w-[40vw] md:w-[34vw] h-[60vh] md:h-[80vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:rotate-1 hover:shadow-2xl ${
+          className={`absolute left-[2vw] md:left-[6vw] top-[5vh] md:top-[10vh] w-[45vw] md:w-[34vw] h-[35vh] md:h-[80vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:rotate-1 hover:shadow-2xl ${
             loaded ? 'opacity-100 translate-x-0 blur-0 scale-100' : 'opacity-0 -translate-x-32 blur-md scale-95'
           }`}
           style={{ transitionDelay: '100ms' }}
@@ -130,7 +131,7 @@ export default function HeroSection() {
 
         {/* Right Photo Card */}
         <div
-          className={`absolute right-[2vw] md:right-[6vw] top-[12vh] w-[44vw] md:w-[38vw] h-[56vh] md:h-[76vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:-rotate-1 hover:shadow-2xl ${
+          className={`absolute right-[2vw] md:right-[6vw] top-[8vh] md:top-[12vh] w-[48vw] md:w-[38vw] h-[32vh] md:h-[76vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:-rotate-1 hover:shadow-2xl ${
             loaded ? 'opacity-100 translate-x-0 blur-0 scale-100' : 'opacity-0 translate-x-32 blur-md scale-95'
           }`}
           style={{ transitionDelay: '200ms' }}
@@ -143,10 +144,10 @@ export default function HeroSection() {
         </div>
 
         {/* Content Overlay with disappearing text box background */}
-        <div className="absolute inset-0 flex flex-col justify-center px-4 md:px-[6vw] z-[5] pointer-events-none">
+        <div className="absolute inset-0 flex flex-col justify-end md:justify-center px-3 md:px-[6vw] pb-16 md:pb-0 z-[5] pointer-events-none">
           <div className="max-w-4xl">
             <div
-              className={`rounded-2xl p-4 md:p-8 transition-all duration-2000 ${
+              className={`rounded-xl md:rounded-2xl p-3 md:p-8 transition-all duration-2000 ${
                 loaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-sm'
               } ${
                 boxVisible
@@ -159,7 +160,7 @@ export default function HeroSection() {
               }}
             >
               <p
-                className={`font-mono text-xs tracking-[0.12em] mb-4 transition-all duration-600 ${
+                className={`font-mono text-[10px] md:text-xs tracking-[0.12em] mb-2 md:mb-4 transition-all duration-600 ${
                   loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
                 } ${
                   textFloating
@@ -177,7 +178,7 @@ export default function HeroSection() {
               </p>
 
               <h1
-                className={`font-display font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight uppercase mb-6 transition-all duration-1000 ${
+                className={`font-display font-bold text-2xl sm:text-3xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] md:leading-[0.92] tracking-tight uppercase mb-3 md:mb-6 transition-all duration-1000 ${
                   textFloating
                     ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]'
                     : 'text-dark'
@@ -216,7 +217,7 @@ export default function HeroSection() {
               </h1>
 
               <p
-                className={`text-sm md:text-lg max-w-md mb-6 md:mb-8 overflow-hidden transition-all duration-1000 ${
+                className={`text-xs md:text-lg max-w-md mb-4 md:mb-8 overflow-hidden transition-all duration-1000 ${
                   textFloating
                     ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
                     : 'text-gray-700'
@@ -228,7 +229,7 @@ export default function HeroSection() {
                 {content.hero.subheadline.split(' ').map((word, wordIndex) => (
                   <span
                     key={wordIndex}
-                    className={`inline-block mr-2 transition-all duration-600 ${
+                    className={`inline-block mr-1 md:mr-2 transition-all duration-600 ${
                       loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-12 blur-sm'
                     }`}
                     style={{ transitionDelay: `${800 + (wordIndex * 80)}ms` }}
@@ -240,7 +241,7 @@ export default function HeroSection() {
 
               <button
                 onClick={scrollToWork}
-                className={`group btn-primary inline-flex items-center gap-2 pointer-events-auto transition-all duration-600 transform hover:scale-110 active:scale-95 ${
+                className={`group btn-primary inline-flex items-center gap-1 md:gap-2 pointer-events-auto transition-all duration-600 transform hover:scale-110 active:scale-95 text-sm md:text-base px-4 py-2 md:px-6 md:py-3 ${
                   loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-16 blur-sm'
                 } ${
                   textFloating
@@ -255,7 +256,7 @@ export default function HeroSection() {
                 <span className="transition-all duration-300 group-hover:tracking-wider">
                   {content.hero.cta}
                 </span>
-                <ArrowRight className="w-4 h-4 md:w-[18px] md:h-[18px] transition-all duration-300 group-hover:translate-x-2 group-hover:scale-125" />
+                <ArrowRight className="w-3 h-3 md:w-[18px] md:h-[18px] transition-all duration-300 group-hover:translate-x-2 group-hover:scale-125" />
               </button>
             </div>
           </div>
@@ -263,14 +264,14 @@ export default function HeroSection() {
 
         {/* Scroll Indicator */}
         <div
-          className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-10 transition-all duration-800 hover:scale-125 cursor-pointer ${
+          className={`absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-10 transition-all duration-800 hover:scale-125 cursor-pointer ${
             loaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'
           }`}
           style={{ transitionDelay: '1400ms' }}
           onClick={scrollToWork}
         >
-          <div className="w-6 h-10 border-2 border-dark rounded-full flex justify-center pt-2 transition-all duration-300 hover:border-lime hover:shadow-lg">
-            <div className="w-1 h-2 bg-dark rounded-full animate-bounce transition-all duration-300 hover:bg-lime" />
+          <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-dark rounded-full flex justify-center pt-1.5 md:pt-2 transition-all duration-300 hover:border-lime hover:shadow-lg">
+            <div className="w-0.5 md:w-1 h-1.5 md:h-2 bg-dark rounded-full animate-bounce transition-all duration-300 hover:bg-lime" />
           </div>
         </div>
       </div>
