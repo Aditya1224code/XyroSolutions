@@ -136,6 +136,43 @@
   }
 }
 
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes floatSide {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(10px) translateY(-5px);
+  }
+  50% {
+    transform: translateX(-5px) translateY(-10px);
+  }
+  75% {
+    transform: translateX(8px) translateY(-3px);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.9);
+  }
+}
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -227,11 +264,18 @@
 /* Button Styles */
 .btn-primary {
   @apply bg-lime text-dark font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+  background: linear-gradient(135deg, #B8FF3D 0%, #9FE62D 100%);
 }
 
 .btn-primary:hover {
-  @apply scale-105 shadow-lg;
-  box-shadow: 0 10px 30px rgba(184, 255, 61, 0.3);
+  @apply scale-105;
+  box-shadow: 0 15px 40px rgba(184, 255, 61, 0.4), 0 5px 15px rgba(184, 255, 61, 0.3);
+  background: linear-gradient(135deg, #C5FF4A 0%, #B0F73A 100%);
+}
+
+.btn-primary:active {
+  @apply scale-95;
+  box-shadow: 0 5px 15px rgba(184, 255, 61, 0.2);
 }
 
 .btn-outline {
@@ -280,7 +324,20 @@
   opacity: 0.1;
 }
 
-/* Custom Scrollbar */
+/* Enhanced shadows and effects */
+.shadow-3xl {
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+/* Enhanced image hover effects */
+.img-mono:hover {
+  filter: grayscale(80%) contrast(1.2) brightness(1.1);
+}
+
+/* Smooth transitions for all interactive elements */
+.interactive-element {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 ::-webkit-scrollbar {
   width: 8px;
 }
