@@ -9,22 +9,28 @@ const heroImages = {
 
 export default function HeroSection() {
   const { content } = useContent();
-  const [loaded, setLoaded] = useState(true);
+  const [loaded, setLoaded] = useState(false);
   const [boxVisible, setBoxVisible] = useState(true);
   const [textFloating, setTextFloating] = useState(false);
 
   useEffect(() => {
-    // Start box disappearing animation after 2 seconds (was 4)
+    // Trigger entrance animations after a tiny delay
+    const loadTimer = setTimeout(() => {
+      setLoaded(true);
+    }, 100);
+
+    // Start box disappearing animation after 2 seconds
     const timer1 = setTimeout(() => {
       setBoxVisible(false);
     }, 2000);
 
-    // Make text start floating after 2.5 seconds (was 5)
+    // Make text start floating after 2.5 seconds
     const timer2 = setTimeout(() => {
       setTextFloating(true);
     }, 2500);
 
     return () => {
+      clearTimeout(loadTimer);
       clearTimeout(timer1);
       clearTimeout(timer2);
     };
