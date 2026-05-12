@@ -117,7 +117,7 @@ export default function ContactSection() {
                 className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
-                  <span className="w-5 h-5 border-2 border-dark/30 border-t-dark rounded-full animate-spin" />
+                  <span className="w-5 h-5 border-2 border-dark/30 border-t-dark rounded-full animate-spin dark:border-white/20 dark:border-t-white" />
                 ) : (
                   <>
                     {content.contact.form.buttonText}

@@ -27,6 +27,26 @@
     --ring: 82 100% 62%;
     --radius: 0.625rem;
   }
+
+  .dark {
+    --background: 222 35% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 30% 9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 30% 9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 35% 6%;
+    --secondary: 215 30% 78%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 222 24% 12%;
+    --muted-foreground: 215 22% 74%;
+    --accent: 82 100% 62%;
+    --accent-foreground: 222 25% 8%;
+    --border: 218 24% 28%;
+    --input: 218 24% 28%;
+    --ring: 82 100% 62%;
+  }
 }
 
 @layer base {
@@ -35,11 +55,16 @@
   }
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
-    background-color: #F6F6F2;
+    background-color: hsl(var(--background));
   }
 }
 
@@ -77,6 +102,78 @@
   color: #6D6D6D;
 }
 
+.dark .text-dark {
+  color: #F8FAFC;
+}
+
+.dark .text-gray-custom {
+  color: #CBD5E1;
+}
+
+.dark .bg-off-white {
+  background-color: #0B0F14;
+}
+
+.dark .bg-white {
+  background-color: #111827;
+}
+
+.dark .bg-gray-50 {
+  background-color: #0F172A;
+}
+
+.dark .bg-gray-100 {
+  background-color: #1E293B;
+}
+
+.dark .border-gray-200 {
+  border-color: #334155;
+}
+
+.dark .border-gray-300 {
+  border-color: #475569;
+}
+
+.dark .text-gray-300 {
+  color: #E2E8F0;
+}
+
+.dark .text-gray-600 {
+  color: #CBD5E1;
+}
+
+.dark .text-gray-700 {
+  color: #E2E8F0;
+}
+
+.dark .nav-link {
+  color: #F5F7FB;
+}
+
+.dark .btn-outline {
+  border-color: #E2E8F0;
+  color: #F8FAFC;
+}
+
+.dark .btn-outline:hover {
+  background-color: #F8FAFC;
+  color: #0B0F14;
+}
+
+.dark .btn-primary {
+  color: #0B0F14;
+}
+
+.dark .bg-lime,
+.dark .bg-lime.text-dark {
+  color: #0B0F14;
+}
+
+.dark .grain-overlay {
+  opacity: 0.08;
+  mix-blend-mode: screen;
+}
+
 /* Grain Overlay */
 .grain-overlay {
   position: fixed;
@@ -89,6 +186,20 @@
   opacity: 0.04;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.dark [class*='bg-[#F6F6F2]'] {
+  background-color: #0B0F14 !important;
+}
+
+.dark [class*='from-[#F6F6F2]'] {
+  --tw-gradient-from: #0B0F14 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(11 15 20 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.dark [class*='to-[#F6F6F2]'] {
+  --tw-gradient-to: #0B0F14 var(--tw-gradient-to-position);
 }
 
 /* Animation Classes */
@@ -282,8 +393,18 @@
   @apply border-2 border-[#111111] text-[#111111] font-semibold px-6 py-3 rounded-xl transition-all duration-300;
 }
 
+.dark .btn-outline {
+  border-color: #F5F7FB;
+  color: #F5F7FB;
+}
+
 .btn-outline:hover {
   @apply bg-[#111111] text-white;
+}
+
+.dark .btn-outline:hover {
+  background-color: #F5F7FB;
+  color: #0B0F14;
 }
 
 /* Card Styles */
@@ -324,9 +445,18 @@
   opacity: 0.1;
 }
 
+.dark .dot-grid {
+  background-image: radial-gradient(circle, #F5F7FB 1px, transparent 1px);
+  opacity: 0.06;
+}
+
 /* Enhanced shadows and effects */
 .shadow-3xl {
   box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+.dark .shadow-3xl {
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 /* Enhanced image hover effects */
@@ -346,9 +476,17 @@
   background: #F6F6F2;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #0B0F14;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #111111;
   border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2B3240;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -358,6 +496,18 @@
 /* Form Styles */
 input, textarea {
   @apply bg-white border border-gray-300 rounded-lg px-4 py-3 transition-all duration-300;
+}
+
+.dark input,
+.dark textarea {
+  background-color: #121722;
+  border-color: #2A3140;
+  color: #F5F7FB;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #8C96A8;
 }
 
 input:focus, textarea:focus {
@@ -372,6 +522,10 @@ input:focus, textarea:focus {
 .nav-link::after {
   content: '';
   @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[#B8FF3D] transition-all duration-300;
+}
+
+.dark .nav-link::after {
+  background-color: #B8FF3D;
 }
 
 .nav-link:hover::after {

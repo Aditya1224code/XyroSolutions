@@ -16,7 +16,7 @@ export default function ProcessSection() {
     <section 
       id="process"
       ref={sectionRef}
-      className="bg-off-white relative overflow-hidden"
+      className="bg-off-white dark:bg-[#050608] relative overflow-hidden"
     >
       {/* Mobile Layout */}
       <div className="md:hidden py-16 px-6">
@@ -31,7 +31,7 @@ export default function ProcessSection() {
         {/* Content */}
         <div className="relative z-[5] mb-8">
           <h2 
-            className={`font-display font-bold text-3xl leading-[0.95] tracking-tight text-dark uppercase mb-4 transition-all duration-700 ${
+            className={`font-display font-bold text-3xl leading-[0.95] tracking-tight text-dark dark:text-[#F8FAFC] uppercase mb-4 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'
             }`}
             style={{ transitionDelay: '200ms' }}
@@ -40,7 +40,7 @@ export default function ProcessSection() {
           </h2>
 
           <p 
-            className={`text-sm text-gray-custom mb-6 transition-all duration-700 ${
+            className={`text-sm text-gray-custom dark:text-slate-300 mb-6 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'
             }`}
             style={{ transitionDelay: '300ms' }}
@@ -75,7 +75,7 @@ export default function ProcessSection() {
             return (
               <div 
                 key={index}
-                className="bg-dark text-white p-5 rounded-xl"
+                className="bg-dark text-white p-5 rounded-xl dark:bg-[#111827] dark:border dark:border-white/10 dark:shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
                 style={{ transitionDelay: `${600 + index * 100}ms` }}
               >
                 <div className="flex items-center justify-between mb-3">
@@ -116,7 +116,7 @@ export default function ProcessSection() {
           style={{ transitionDelay: '400ms' }}
         />
         <div 
-          className={`decor-ring border-dark w-28 h-28 absolute right-[10%] top-[68%] z-[3] transition-all duration-1000 ${
+          className={`decor-ring border-dark dark:border-white/20 w-28 h-28 absolute right-[10%] top-[68%] z-[3] transition-all duration-1000 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
           }`}
           style={{ transitionDelay: '500ms' }}
@@ -128,14 +128,14 @@ export default function ProcessSection() {
           style={{ transitionDelay: '600ms' }}
         >
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-            <path d="M16 0V32M0 16H32" stroke="#111111" strokeWidth="3"/>
+            <path d="M16 0V32M0 16H32" stroke="#111111" className="dark:stroke-[#F8FAFC]" strokeWidth="3"/>
           </svg>
         </div>
 
         {/* Left Content */}
         <div className="absolute left-[6vw] top-[18vh] w-[40vw] z-[5]">
           <h2 
-            className={`font-display font-bold text-5xl lg:text-6xl leading-[0.95] tracking-tight text-dark uppercase mb-6 transition-all duration-700 ${
+            className={`font-display font-bold text-5xl lg:text-6xl leading-[0.95] tracking-tight text-dark dark:text-[#F8FAFC] uppercase mb-6 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'
             }`}
             style={{ transitionDelay: '200ms' }}
@@ -144,7 +144,7 @@ export default function ProcessSection() {
           </h2>
 
           <p 
-            className={`text-lg text-gray-custom mb-8 max-w-md transition-all duration-700 ${
+            className={`text-lg text-gray-custom dark:text-slate-300 mb-8 max-w-md transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'
             }`}
             style={{ transitionDelay: '300ms' }}
@@ -180,7 +180,7 @@ export default function ProcessSection() {
               return (
                 <div 
                   key={index}
-                  className="bg-dark text-white p-6 rounded-xl card-hover"
+                  className="bg-dark text-white p-6 rounded-xl card-hover dark:bg-[#111827] dark:border dark:border-white/10 dark:shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
                   style={{ transitionDelay: `${600 + index * 100}ms` }}
                 >
                   <div className="flex items-center justify-between mb-4">

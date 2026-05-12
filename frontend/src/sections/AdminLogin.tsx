@@ -32,37 +32,37 @@ export default function AdminLogin({ onLogin, onBack }: AdminLoginProps) {
   };
 
   return (
-    <div className="min-h-screen bg-off-white flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-off-white dark:bg-[#050608] flex items-center justify-center relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="decor-circle bg-lime w-64 h-64 absolute -left-20 -top-20 opacity-50" />
-      <div className="decor-ring border-dark w-48 h-48 absolute -right-10 -bottom-10 opacity-30" />
+      <div className="decor-circle bg-lime w-64 h-64 absolute -left-20 -top-20 opacity-50 dark:opacity-25" />
+      <div className="decor-ring border-dark w-48 h-48 absolute -right-10 -bottom-10 opacity-30 dark:border-white/20 dark:opacity-20" />
       
       {/* Back Button */}
       <button
         onClick={onBack}
-        className="absolute top-6 left-6 flex items-center gap-2 text-dark hover:text-lime transition-colors"
+        className="absolute top-6 left-6 flex items-center gap-2 text-dark hover:text-lime transition-colors dark:text-[#F8FAFC] dark:hover:text-[#B8FF3D]"
       >
         <ArrowLeft size={20} />
         <span>Back to site</span>
       </button>
 
       {/* Login Card */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 w-full max-w-md mx-4 relative z-10">
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 w-full max-w-md mx-4 relative z-10 dark:bg-[#111827] dark:border dark:border-white/10 dark:shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-lime rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-lime rounded-full flex items-center justify-center mx-auto mb-4 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
             <Lock size={28} className="text-dark" />
           </div>
-          <h1 className="font-display font-bold text-2xl md:text-3xl text-dark mb-2">
+          <h1 className="font-display font-bold text-2xl md:text-3xl text-dark dark:text-[#F8FAFC] mb-2">
             Admin Access
           </h1>
-          <p className="text-gray-custom text-sm">
+          <p className="text-gray-custom dark:text-slate-300 text-sm">
             Enter your password to manage content
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-dark mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-dark dark:text-[#F8FAFC] mb-2">
               Email
             </label>
             <input
@@ -76,7 +76,7 @@ export default function AdminLogin({ onLogin, onBack }: AdminLoginProps) {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-dark mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-dark dark:text-[#F8FAFC] mb-2">
               Password
             </label>
             <div className="relative">
@@ -92,7 +92,7 @@ export default function AdminLogin({ onLogin, onBack }: AdminLoginProps) {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-custom hover:text-dark transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-custom hover:text-dark transition-colors dark:text-slate-400 dark:hover:text-[#F8FAFC]"
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>

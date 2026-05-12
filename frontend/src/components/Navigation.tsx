@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Menu, X, Lock } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Menu, Moon, SunMedium, X, Lock } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 interface NavigationProps {
   scrolled: boolean;
@@ -10,6 +11,18 @@ interface NavigationProps {
 
 export default function Navigation({ scrolled, onAdminClick, onPageChange, currentPage }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === 'dark';
+
+  const toggleTheme = () => {
+    setTheme(isDark ? 'light' : 'dark');
+  };
 
   const navLinks = [
     { label: 'Home', page: 'home', href: undefined },
@@ -84,6 +97,15 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
             >
               <Lock size={18} />
             </button>
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full border border-black/10 bg-white/70 text-dark transition-colors hover:bg-white dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              disabled={!mounted}
+            >
+              {mounted && isDark ? <SunMedium size={18} /> : <Moon size={18} />}
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -130,6 +152,15 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
           >
             <Lock size={18} />
             <span>Admin Access</span>
+          </button>
+          <button
+            onClick={toggleTheme}
+            className="mt-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-dark transition-colors hover:bg-white dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            disabled={!mounted}
+          >
+            {mounted && isDark ? <SunMedium size={18} /> : <Moon size={18} />}
+            <span>{isDark ? 'Light mode' : 'Dark mode'}</span>
           </button>
         </div>
       </div>

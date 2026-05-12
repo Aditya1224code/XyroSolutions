@@ -17,7 +17,7 @@ export default function AboutSection() {
     <section 
       id="about"
       ref={sectionRef}
-      className="bg-off-white relative overflow-hidden"
+      className="bg-off-white dark:bg-[#050608] relative overflow-hidden"
     >
       {/* Mobile Layout */}
       <div className="md:hidden py-16 px-6">
@@ -32,7 +32,7 @@ export default function AboutSection() {
         {/* Content */}
         <div className="relative z-[5] mb-8">
           <p 
-            className={`font-mono text-xs tracking-[0.12em] text-gray-custom mb-3 transition-all duration-700 ${
+            className={`font-mono text-xs tracking-[0.12em] text-gray-custom dark:text-slate-300 mb-3 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '300ms' }}
@@ -41,7 +41,7 @@ export default function AboutSection() {
           </p>
 
           <h2 
-            className={`font-display font-bold text-3xl leading-[0.95] tracking-tight text-dark mb-4 transition-all duration-700 ${
+            className={`font-display font-bold text-3xl leading-[0.95] tracking-tight text-dark dark:text-[#F8FAFC] mb-4 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '400ms' }}
@@ -50,7 +50,7 @@ export default function AboutSection() {
           </h2>
 
           <p 
-            className={`text-sm text-gray-custom mb-6 transition-all duration-700 ${
+            className={`text-sm text-gray-custom dark:text-slate-300 mb-6 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '500ms' }}
@@ -59,7 +59,7 @@ export default function AboutSection() {
           </p>
 
           <p 
-            className={`font-display font-bold text-xl text-dark uppercase tracking-tight mb-6 transition-all duration-700 ${
+            className={`font-display font-bold text-xl text-dark dark:text-[#F8FAFC] uppercase tracking-tight mb-6 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '600ms' }}
@@ -69,7 +69,7 @@ export default function AboutSection() {
 
           <button 
             onClick={scrollToStudio}
-            className={`inline-flex items-center gap-2 font-medium text-dark hover:text-lime transition-all duration-700 group ${
+            className={`inline-flex items-center gap-2 font-medium text-dark dark:text-[#F8FAFC] hover:text-lime transition-all duration-700 group ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '700ms' }}
@@ -137,7 +137,7 @@ export default function AboutSection() {
         {/* Right Content */}
         <div className="absolute right-[8vw] top-[18vh] w-[40vw] z-[5]">
           <p 
-            className={`font-mono text-xs tracking-[0.12em] text-gray-custom mb-4 transition-all duration-700 ${
+            className={`font-mono text-xs tracking-[0.12em] text-gray-custom dark:text-slate-300 mb-4 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '300ms' }}
@@ -146,7 +146,7 @@ export default function AboutSection() {
           </p>
 
           <h2 
-            className={`font-display font-bold text-5xl lg:text-6xl leading-[0.95] tracking-tight text-dark mb-6 transition-all duration-700 ${
+            className={`font-display font-bold text-5xl lg:text-6xl leading-[0.95] tracking-tight text-dark dark:text-[#F8FAFC] mb-6 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '400ms' }}
@@ -155,7 +155,7 @@ export default function AboutSection() {
           </h2>
 
           <p 
-            className={`text-lg text-gray-custom mb-8 max-w-lg transition-all duration-700 ${
+            className={`text-lg text-gray-custom dark:text-slate-300 mb-8 max-w-lg transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '500ms' }}
@@ -164,7 +164,7 @@ export default function AboutSection() {
           </p>
 
           <p 
-            className={`font-display font-bold text-2xl md:text-3xl text-dark uppercase tracking-tight mb-8 transition-all duration-700 ${
+            className={`font-display font-bold text-2xl md:text-3xl text-dark dark:text-[#F8FAFC] uppercase tracking-tight mb-8 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '600ms' }}
@@ -174,7 +174,7 @@ export default function AboutSection() {
 
           <button 
             onClick={scrollToStudio}
-            className={`inline-flex items-center gap-2 font-medium text-dark hover:text-lime transition-all duration-700 group ${
+            className={`inline-flex items-center gap-2 font-medium text-dark dark:text-[#F8FAFC] hover:text-lime transition-all duration-700 group ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '700ms' }}

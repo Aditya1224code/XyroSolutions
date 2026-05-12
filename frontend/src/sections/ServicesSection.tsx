@@ -86,7 +86,7 @@ export default function ServicesSection({ onStartInquiry }: ServicesSectionProps
   };
 
   return (
-    <section className="py-20 px-6 lg:px-12 bg-[#F6F6F2]">
+    <section className="py-20 px-6 lg:px-12 bg-[#F6F6F2] dark:bg-[#050608]">
       <div className="w-full max-w-7xl mx-auto">
         
         {/* Categories Grid */}
@@ -95,10 +95,10 @@ export default function ServicesSection({ onStartInquiry }: ServicesSectionProps
             <div className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-medium mb-4">
               Service Categories
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-dark dark:text-[#F8FAFC] mb-4">
               What We Offer
             </h2>
-            <p className="text-lg text-dark/70 max-w-3xl mx-auto">
+            <p className="text-lg text-dark/70 dark:text-slate-300 max-w-3xl mx-auto">
               Choose from our comprehensive range of professional services tailored to meet your business needs
             </p>
           </div>
@@ -111,21 +111,21 @@ export default function ServicesSection({ onStartInquiry }: ServicesSectionProps
                 whileTap={{ scale: 0.98 }}
               >
                 <Card
-                  className={`p-6 cursor-pointer transition-all duration-300 ${category.bgColor} border-2 ${
+                  className={`p-6 cursor-pointer transition-all duration-300 ${category.bgColor} dark:bg-gradient-to-br dark:from-[#0F172A] dark:to-[#111827] dark:border-[#2B3445] dark:shadow-[0_20px_50px_rgba(0,0,0,0.45)] border-2 ${
                     selectedCategory === category.id 
-                      ? 'border-blue-900 ring-2 ring-blue-900/30' 
-                      : 'border-transparent'
+                      ? 'border-blue-900 ring-2 ring-blue-900/30 dark:border-[#7C3AED] dark:ring-[#7C3AED]/30' 
+                      : 'border-transparent dark:hover:border-slate-500'
                   }`}
                   onClick={() => handleCategoryClick(category.id)}
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-lg ${category.color} bg-white/80`}>
+                    <div className={`p-3 rounded-lg ${category.color} bg-white/80 dark:bg-[#1E293B] dark:ring-1 dark:ring-white/5`}>
                       <category.icon size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-dark mb-2">{category.title}</h3>
-                      <p className="text-sm text-dark/70 mb-3">{category.description}</p>
-                      <div className="flex items-center gap-1 text-primary text-sm font-medium">
+                      <h3 className="font-semibold text-dark dark:text-[#F8FAFC] mb-2">{category.title}</h3>
+                      <p className="text-sm text-dark/70 dark:text-slate-300 mb-3">{category.description}</p>
+                      <div className="flex items-center gap-1 text-primary dark:text-[#B8FF3D] text-sm font-medium">
                         Get Started <ChevronRight size={16} />
                       </div>
                     </div>

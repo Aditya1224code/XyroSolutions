@@ -44,7 +44,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="bg-off-white x-pattern relative overflow-hidden min-h-screen md:min-h-screen">
+    <section className="bg-off-white dark:bg-[#050608] x-pattern relative overflow-hidden min-h-screen md:min-h-screen">
       {/* Enhanced animated gradient overlay that becomes more prominent when text floats */}
       <div className={`absolute inset-0 transition-all duration-1500 ${textFloating ? 'opacity-20' : 'opacity-10'}`}>
         <div
@@ -139,14 +139,14 @@ export default function HeroSection() {
                 loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               } ${
                 boxVisible
-                  ? 'bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-200'
+                  ? 'bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-200 dark:bg-[#111827]/95 dark:border-white/10 dark:shadow-[0_20px_60px_rgba(0,0,0,0.45)]'
                   : 'bg-transparent shadow-none border-transparent'
               }`}
             >
               <p
                 className={`font-mono text-[10px] tracking-[0.12em] mb-2 transition-all duration-600 ${
                   loaded ? 'opacity-100' : 'opacity-0'
-                } ${textFloating ? 'text-dark' : 'text-gray-600'}`}
+                } ${textFloating ? 'text-dark' : 'text-gray-600 dark:text-slate-300'}`}
               >
                 {content.hero.microLabel}
               </p>
@@ -168,7 +168,7 @@ export default function HeroSection() {
               </h1>
 
               <p
-                className={`text-sm text-gray-700 mb-4 transition-all duration-600 ${
+                className={`text-sm text-gray-700 dark:text-slate-300 mb-4 transition-all duration-600 ${
                   loaded ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{ transitionDelay: '500ms' }}
@@ -197,8 +197,8 @@ export default function HeroSection() {
             style={{ transitionDelay: '900ms' }}
             onClick={scrollToWork}
           >
-            <div className="w-5 h-8 border-2 border-dark rounded-full flex justify-center pt-1.5">
-              <div className="w-0.5 h-1.5 bg-dark rounded-full animate-bounce" />
+            <div className="w-5 h-8 border-2 border-dark dark:border-[#F8FAFC] rounded-full flex justify-center pt-1.5">
+              <div className="w-0.5 h-1.5 bg-dark dark:bg-[#F8FAFC] rounded-full animate-bounce" />
             </div>
           </div>
         </div>
@@ -239,7 +239,7 @@ export default function HeroSection() {
                 loaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-sm'
               } ${
                 boxVisible
-                  ? 'bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-200'
+                  ? 'bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-200 dark:bg-[#111827]/95 dark:border-white/10 dark:shadow-[0_20px_60px_rgba(0,0,0,0.45)]'
                   : 'bg-transparent backdrop-blur-none shadow-none border-transparent'
               }`}
               style={{
@@ -253,7 +253,7 @@ export default function HeroSection() {
                 } ${
                   textFloating
                     ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-600'
+                    : 'text-gray-600 dark:text-slate-300'
                 }`}
                 style={{
                   transitionDelay: '50ms',
@@ -269,7 +269,7 @@ export default function HeroSection() {
                 className={`font-display font-bold text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight uppercase mb-6 transition-all duration-1000 ${
                   textFloating
                     ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]'
-                    : 'text-dark'
+                    : 'text-dark dark:text-[#F8FAFC]'
                 }`}
                 style={{
                   textShadow: textFloating
@@ -308,7 +308,7 @@ export default function HeroSection() {
                 className={`text-lg max-w-md mb-8 overflow-hidden transition-all duration-1000 ${
                   textFloating
                     ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-700'
+                    : 'text-gray-700 dark:text-slate-300'
                 }`}
                 style={{
                   textShadow: textFloating ? '2px 2px 4px rgba(0,0,0,0.7), 0 0 8px rgba(0,0,0,0.5)' : 'none'
@@ -358,8 +358,8 @@ export default function HeroSection() {
           style={{ transitionDelay: '1400ms' }}
           onClick={scrollToWork}
         >
-          <div className="w-6 h-10 border-2 border-dark rounded-full flex justify-center pt-2 transition-all duration-300 hover:border-lime hover:shadow-lg">
-            <div className="w-1 h-2 bg-dark rounded-full animate-bounce transition-all duration-300 hover:bg-lime" />
+          <div className="w-6 h-10 border-2 border-dark dark:border-[#F8FAFC] rounded-full flex justify-center pt-2 transition-all duration-300 hover:border-lime hover:shadow-lg">
+            <div className="w-1 h-2 bg-dark dark:bg-[#F8FAFC] rounded-full animate-bounce transition-all duration-300 hover:bg-lime" />
           </div>
         </div>
       </div>
