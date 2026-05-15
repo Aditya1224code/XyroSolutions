@@ -43,6 +43,25 @@ export default function HeroSection() {
     }
   };
 
+  const renderHeadline = (headline: string) => {
+    const match = headline.match(/\bbrands?\b/i);
+
+    if (!match || match.index === undefined) {
+      return headline;
+    }
+
+    const start = match.index;
+    const end = start + match[0].length;
+
+    return (
+      <>
+        {headline.slice(0, start)}
+        <span className="text-cyan-400">{headline.slice(start, end)}</span>
+        {headline.slice(end)}
+      </>
+    );
+  };
+
   return (
     <section className="bg-off-white dark:bg-[#050608] x-pattern relative overflow-hidden min-h-screen md:min-h-screen">
       {/* Enhanced animated gradient overlay that becomes more prominent when text floats */}
@@ -114,7 +133,7 @@ export default function HeroSection() {
       </div>
 
       {/* Desktop Layout - Show on ALL devices */}
-      <div className="min-h-screen relative">
+      <div className="min-h-screen relative flex flex-col">
         {/* Mobile Layout: Single image at top, content below */}
         <div className="md:hidden flex flex-col h-screen">
           {/* Mobile Image - takes top 45% */}
@@ -203,133 +222,116 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Desktop: Left Photo Card */}
-        <div
-          className={`hidden md:block absolute left-[5vw] top-[12vh] w-[28vw] h-[72vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:rotate-1 hover:shadow-2xl ${
-            loaded ? 'opacity-100 translate-x-0 blur-0 scale-100' : 'opacity-0 -translate-x-32 blur-md scale-95'
-          }`}
-          style={{ transitionDelay: '100ms' }}
-        >
-          <img
-            src={heroImages.primary}
-            alt="Our team"
-            className="w-full h-full object-cover img-mono transition-all duration-700 hover:scale-110 hover:brightness-110"
-          />
-        </div>
-
-        {/* Desktop: Right Photo Card */}
-        <div
-          className={`hidden md:block absolute right-[5vw] top-[14vh] w-[30vw] h-[68vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:-rotate-1 hover:shadow-2xl ${
-            loaded ? 'opacity-100 translate-x-0 blur-0 scale-100' : 'opacity-0 translate-x-32 blur-md scale-95'
-          }`}
-          style={{ transitionDelay: '200ms' }}
-        >
-          <img
-            src={heroImages.secondary}
-            alt="Team member at monument"
-            className="w-full h-full object-cover img-mono transition-all duration-700 hover:scale-110 hover:brightness-110"
-          />
-        </div>
-
-        {/* Desktop Content Overlay - centered between left and right photo cards */}
-        <div className="hidden md:flex absolute inset-0 items-center justify-center z-[5] pointer-events-none">
-          <div className="w-full max-w-2xl mx-auto px-4 text-center">
-            <div
-              className={`rounded-2xl p-6 lg:p-7 transition-all duration-2000 ${
-                loaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-sm'
-              } ${
-                boxVisible
-                  ? 'bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-200 dark:bg-[#111827]/95 dark:border-white/10 dark:shadow-[0_20px_60px_rgba(0,0,0,0.45)]'
-                  : 'bg-transparent backdrop-blur-none shadow-none border-transparent'
-              }`}
-              style={{
-                transitionDelay: '150ms',
-                animation: loaded ? 'breathe 8s ease-in-out infinite' : 'none'
-              }}
+        {/* Desktop: Left-aligned text + Right-aligned images layout */}
+        <div className="hidden md:flex flex-1 items-center justify-between gap-12 px-12 lg:px-16 relative z-10">
+          {/* Left: Text Content */}
+          <div className="flex-1 max-w-md">
+            <p
+              className={`font-mono text-xs lg:text-sm tracking-[0.15em] mb-4 transition-all duration-600 ${
+                loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+              } text-cyan-600 dark:text-cyan-400 uppercase`}
+              style={{ transitionDelay: '200ms' }}
             >
-              <p
-                className={`font-mono text-[10px] lg:text-xs tracking-[0.18em] mb-3 transition-all duration-600 ${
-                  loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
-                } ${
-                  textFloating
-                    ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-600 dark:text-slate-300'
-                }`}
-                style={{
-                  transitionDelay: '50ms',
-                  textShadow: textFloating ? '2px 2px 4px rgba(0,0,0,0.7), 0 0 8px rgba(0,0,0,0.5)' : 'none'
-                }}
-              >
-                <span className="inline-block">
-                  {content.hero.microLabel}
-                </span>
-              </p>
+              {content.hero.microLabel}
+            </p>
 
-              <h1
-                className={`font-display font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[0.95] tracking-tight uppercase mb-4 transition-all duration-1000 ${
-                  textFloating
-                    ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]'
-                    : 'text-dark dark:text-[#F8FAFC]'
-                }`}
-                style={{
-                  textShadow: textFloating
-                    ? '3px 3px 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,0.6), 0 0 20px rgba(0,0,0,0.4)'
-                    : 'none',
-                  whiteSpace: 'pre-wrap'
-                }}
-              >
-                <span className={`block transition-all duration-600 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`} style={{ transitionDelay: '250ms' }}>
-                  {content.hero.headline}
-                </span>
-              </h1>
+            <h1
+              className={`font-display font-bold text-4xl lg:text-5xl xl:text-6xl leading-[1.1] tracking-tight mb-5 transition-all duration-800 text-dark dark:text-white ${
+                loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+              }`}
+              style={{ transitionDelay: '300ms' }}
+            >
+              {renderHeadline(content.hero.headline)}
+            </h1>
 
-              <p
-                className={`text-sm lg:text-base max-w-lg mx-auto mb-6 overflow-hidden transition-all duration-1000 ${
-                  textFloating
-                    ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-700 dark:text-slate-300'
-                }`}
-                style={{
-                  textShadow: textFloating ? '2px 2px 4px rgba(0,0,0,0.7), 0 0 8px rgba(0,0,0,0.5)' : 'none',
-                  whiteSpace: 'pre-wrap'
-                }}
-              >
-                {content.hero.subheadline}
-              </p>
+            <p
+              className={`text-base lg:text-lg mb-8 leading-relaxed transition-all duration-800 text-gray-700 dark:text-gray-300 ${
+                loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+              }`}
+              style={{ transitionDelay: '400ms' }}
+            >
+              {content.hero.subheadline}
+            </p>
 
-              <button
-                onClick={scrollToWork}
-                className={`group btn-primary inline-flex items-center gap-2 pointer-events-auto transition-all duration-600 transform hover:scale-110 active:scale-95 px-5 py-2.5 text-sm lg:text-base mx-auto ${
-                  loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-16 blur-sm'
-                } ${
-                  textFloating
-                    ? 'shadow-2xl shadow-lime/40 hover:shadow-lime/60'
-                    : 'hover:shadow-2xl hover:shadow-lime/30'
-                }`}
-                style={{
-                  transitionDelay: '1200ms',
-                  filter: textFloating ? 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' : 'none'
-                }}
-              >
-                <span className="transition-all duration-300 group-hover:tracking-wider">
-                  {content.hero.cta}
-                </span>
-                <ArrowRight className="w-[18px] h-[18px] transition-all duration-300 group-hover:translate-x-2 group-hover:scale-125" />
-              </button>
+            <button
+              onClick={scrollToWork}
+              className={`group btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-600 ${
+                loaded ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 -translate-x-8 blur-sm'
+              }`}
+              style={{ transitionDelay: '500ms' }}
+            >
+              <span>{content.hero.cta}</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            {/* Scroll indicator on left */}
+            <div
+              className={`mt-12 flex items-center gap-2 cursor-pointer transition-all duration-800 ${
+                loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+              }`}
+              style={{ transitionDelay: '700ms' }}
+              onClick={scrollToWork}
+            >
+              <div className="w-5 h-8 border-2 border-dark dark:border-gray-400 rounded-full flex justify-center pt-1">
+                <div className="w-0.5 h-1.5 bg-dark dark:bg-gray-400 rounded-full animate-bounce" />
+              </div>
+              <span className="text-sm text-gray-600 dark:text-gray-400">Scroll down</span>
             </div>
           </div>
-        </div>
 
-        {/* Desktop Scroll Indicator */}
-        <div
-          className={`hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10 transition-all duration-800 hover:scale-125 cursor-pointer ${
-            loaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'
-          }`}
-          style={{ transitionDelay: '1400ms' }}
-          onClick={scrollToWork}
-        >
-          <div className="w-6 h-10 border-2 border-dark dark:border-[#F8FAFC] rounded-full flex justify-center pt-2 transition-all duration-300 hover:border-lime hover:shadow-lg">
-            <div className="w-1 h-2 bg-dark dark:bg-[#F8FAFC] rounded-full animate-bounce transition-all duration-300 hover:bg-lime" />
+          {/* Right: Images with decorative elements - matching screenshot exactly */}
+          <div className="flex-1 relative h-[75vh] min-w-0 flex items-center justify-end">
+            
+            {/* Light cyan gradient wave (left background) */}
+            <div
+              className={`absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-r from-cyan-200 to-cyan-100 opacity-40 transition-all duration-800 z-0 blur-3xl ${
+                loaded ? 'scale-100 opacity-40' : 'scale-0 opacity-0'
+              }`}
+              style={{ transitionDelay: '250ms' }}
+            />
+
+            {/* Images container */}
+            <div className="relative w-full h-full flex items-center justify-end pr-8">
+              
+              {/* Larger image - Single boy (RIGHT, center-right) */}
+              <div
+                className={`absolute right-0 top-1/2 -translate-y-1/2 w-full max-w-lg h-96 rounded-3xl overflow-hidden shadow-2xl transition-all duration-800 z-[3] border-4 border-cyan-400 ${
+                  loaded ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-20 scale-90'
+                }`}
+                style={{
+                  transitionDelay: '300ms',
+                  clipPath: 'polygon(5% 0, 100% 0, 100% 100%, 0 100%)',
+                }}
+              >
+                <img
+                  src={heroImages.secondary}
+                  alt="Team member at monument"
+                  className="w-full h-full object-cover img-mono transition-all duration-700 hover:scale-110"
+                />
+              </div>
+
+              {/* Smaller image - Group photo (BOTTOM LEFT, deeply overlapping) */}
+              <div
+                className={`absolute left-1/2 bottom-0 -translate-x-1/2 w-56 h-64 rounded-3xl overflow-hidden shadow-2xl transition-all duration-800 z-[4] border-4 border-cyan-400 ${
+                  loaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
+                }`}
+                style={{ transitionDelay: '400ms' }}
+              >
+                <img
+                  src={heroImages.primary}
+                  alt="Our team"
+                  className="w-full h-full object-cover img-mono transition-all duration-700 hover:scale-110"
+                />
+              </div>
+
+              {/* Solid turquoise shape (bottom right corner) */}
+              <div
+                className={`absolute bottom-0 right-0 w-56 h-56 bg-gradient-to-tl from-cyan-500 to-teal-400 transition-all duration-800 z-[1] rounded-tl-3xl ${
+                  loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+                }`}
+                style={{ transitionDelay: '500ms' }}
+              />
+            </div>
           </div>
         </div>
       </div>
