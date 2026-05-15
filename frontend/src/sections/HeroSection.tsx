@@ -205,7 +205,7 @@ export default function HeroSection() {
 
         {/* Desktop: Left Photo Card */}
         <div
-          className={`hidden md:block absolute left-[6vw] top-[10vh] w-[34vw] h-[80vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:rotate-1 hover:shadow-2xl ${
+          className={`hidden md:block absolute left-[5vw] top-[12vh] w-[28vw] h-[72vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:rotate-1 hover:shadow-2xl ${
             loaded ? 'opacity-100 translate-x-0 blur-0 scale-100' : 'opacity-0 -translate-x-32 blur-md scale-95'
           }`}
           style={{ transitionDelay: '100ms' }}
@@ -219,7 +219,7 @@ export default function HeroSection() {
 
         {/* Desktop: Right Photo Card */}
         <div
-          className={`hidden md:block absolute right-[6vw] top-[12vh] w-[38vw] h-[76vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:-rotate-1 hover:shadow-2xl ${
+          className={`hidden md:block absolute right-[5vw] top-[14vh] w-[30vw] h-[68vh] z-[2] overflow-hidden transition-all duration-800 hover:scale-105 hover:-rotate-1 hover:shadow-2xl ${
             loaded ? 'opacity-100 translate-x-0 blur-0 scale-100' : 'opacity-0 translate-x-32 blur-md scale-95'
           }`}
           style={{ transitionDelay: '200ms' }}
@@ -231,11 +231,11 @@ export default function HeroSection() {
           />
         </div>
 
-        {/* Desktop Content Overlay */}
-        <div className="hidden md:flex absolute inset-0 flex-col justify-center px-[6vw] z-[5] pointer-events-none">
-          <div className="max-w-4xl">
+        {/* Desktop Content Overlay - centered between left and right photo cards */}
+        <div className="hidden md:flex absolute inset-0 items-center justify-center z-[5] pointer-events-none">
+          <div className="w-full max-w-2xl mx-auto px-4 text-center">
             <div
-              className={`rounded-2xl p-8 transition-all duration-2000 ${
+              className={`rounded-2xl p-6 lg:p-7 transition-all duration-2000 ${
                 loaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-sm'
               } ${
                 boxVisible
@@ -248,7 +248,7 @@ export default function HeroSection() {
               }}
             >
               <p
-                className={`font-mono text-xs tracking-[0.12em] mb-4 transition-all duration-600 ${
+                className={`font-mono text-[10px] lg:text-xs tracking-[0.18em] mb-3 transition-all duration-600 ${
                   loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
                 } ${
                   textFloating
@@ -266,7 +266,7 @@ export default function HeroSection() {
               </p>
 
               <h1
-                className={`font-display font-bold text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight uppercase mb-6 transition-all duration-1000 ${
+                className={`font-display font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[0.95] tracking-tight uppercase mb-4 transition-all duration-1000 ${
                   textFloating
                     ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]'
                     : 'text-dark dark:text-[#F8FAFC]'
@@ -274,62 +274,32 @@ export default function HeroSection() {
                 style={{
                   textShadow: textFloating
                     ? '3px 3px 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,0.6), 0 0 20px rgba(0,0,0,0.4)'
-                    : 'none'
+                    : 'none',
+                  whiteSpace: 'pre-wrap'
                 }}
               >
-                {content.hero.headline.split(' / ').map((line, i) => (
-                  <span
-                    key={i}
-                    className={`block overflow-hidden transition-all duration-600 ${
-                      loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-                    }`}
-                    style={{ transitionDelay: `${200 + (i * 100)}ms` }}
-                  >
-                    <span className="inline-block hover:scale-105 transition-transform duration-300 cursor-default">
-                      {line.split('').map((char, charIndex) => (
-                        <span
-                          key={charIndex}
-                          className={`inline-block transition-all duration-600 ${
-                            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                          }`}
-                          style={{
-                            transitionDelay: `${300 + (i * 150) + (charIndex * 30)}ms`
-                          }}
-                        >
-                          {char === ' ' ? '\u00A0' : char}
-                        </span>
-                      ))}
-                    </span>
-                  </span>
-                ))}
+                <span className={`block transition-all duration-600 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`} style={{ transitionDelay: '250ms' }}>
+                  {content.hero.headline}
+                </span>
               </h1>
 
               <p
-                className={`text-lg max-w-md mb-8 overflow-hidden transition-all duration-1000 ${
+                className={`text-sm lg:text-base max-w-lg mx-auto mb-6 overflow-hidden transition-all duration-1000 ${
                   textFloating
                     ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
                     : 'text-gray-700 dark:text-slate-300'
                 }`}
                 style={{
-                  textShadow: textFloating ? '2px 2px 4px rgba(0,0,0,0.7), 0 0 8px rgba(0,0,0,0.5)' : 'none'
+                  textShadow: textFloating ? '2px 2px 4px rgba(0,0,0,0.7), 0 0 8px rgba(0,0,0,0.5)' : 'none',
+                  whiteSpace: 'pre-wrap'
                 }}
               >
-                {content.hero.subheadline.split(' ').map((word, wordIndex) => (
-                  <span
-                    key={wordIndex}
-                    className={`inline-block mr-2 transition-all duration-600 ${
-                      loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-12 blur-sm'
-                    }`}
-                    style={{ transitionDelay: `${800 + (wordIndex * 80)}ms` }}
-                  >
-                    {word}
-                  </span>
-                ))}
+                {content.hero.subheadline}
               </p>
 
               <button
                 onClick={scrollToWork}
-                className={`group btn-primary inline-flex items-center gap-2 pointer-events-auto transition-all duration-600 transform hover:scale-110 active:scale-95 px-6 py-3 ${
+                className={`group btn-primary inline-flex items-center gap-2 pointer-events-auto transition-all duration-600 transform hover:scale-110 active:scale-95 px-5 py-2.5 text-sm lg:text-base mx-auto ${
                   loaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-16 blur-sm'
                 } ${
                   textFloating
