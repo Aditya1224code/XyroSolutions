@@ -19,6 +19,7 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
   }, []);
 
   const isDark = mounted && resolvedTheme === 'dark';
+  const logoSrc = isDark ? '/logo-dark.svg' : '/logo.svg';
 
   const toggleTheme = () => {
     setTheme(isDark ? 'light' : 'dark');
@@ -68,9 +69,14 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
           {/* Logo */}
           <button
             onClick={() => onPageChange('home')}
-            className="font-display font-bold text-lg tracking-tight text-dark"
+            className="h-[68px] md:h-[72px] flex items-center hover:opacity-80 transition-opacity"
+            title="Xyro Solutions"
           >
-            XyroSolutions
+            <img 
+              src={logoSrc} 
+              alt="Xyro Solutions" 
+              className="h-[58px] md:h-[62px] w-auto"
+            />
           </button>
 
           {/* Desktop Navigation */}
@@ -120,7 +126,7 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 bg-[#F6F6F2] transition-transform duration-500 md:hidden ${
+        className={`fixed inset-0 z-40 bg-[#F6F6F2] dark:bg-[#050608] transition-transform duration-500 md:hidden ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -129,7 +135,7 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
             <button
               key={link.label}
               onClick={() => handleNavigation(link)}
-              className="font-display text-3xl font-bold text-dark"
+              className="font-display text-3xl font-bold text-dark dark:text-white"
             >
               {link.label}
             </button>

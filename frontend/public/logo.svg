@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1152 768" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16D6C9"/>
+      <stop offset="50%" stop-color="#34E5E1"/>
+      <stop offset="100%" stop-color="#0FB7B0"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0 8)">
+    <path d="M 426 218 C 462 218 500 258 528 314 C 502 340 470 354 438 354 C 402 354 377 327 377 296 C 377 257 399 218 426 218 Z" fill="url(#leafGradient)"/>
+    <path d="M 726 218 C 690 218 652 258 624 314 C 650 340 682 354 714 354 C 750 354 775 327 775 296 C 775 257 753 218 726 218 Z" fill="url(#leafGradient)"/>
+    <path d="M 426 562 C 462 562 500 522 528 466 C 502 440 470 426 438 426 C 402 426 377 453 377 484 C 377 523 399 562 426 562 Z" fill="url(#leafGradient)" opacity="0.95"/>
+    <path d="M 726 562 C 690 562 652 522 624 466 C 650 440 682 426 714 426 C 750 426 775 453 775 484 C 775 523 753 562 726 562 Z" fill="url(#leafGradient)" opacity="0.95"/>
+  </g>
+
+  <text x="576" y="650" font-family="Arial, sans-serif" font-size="120" font-weight="600" text-anchor="middle">
+    <tspan fill="#19D5D0">Xyro</tspan><tspan fill="#111111">Solutions</tspan>
+  </text>
+</svg>
