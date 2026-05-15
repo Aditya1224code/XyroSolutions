@@ -69,13 +69,13 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
           {/* Logo */}
           <button
             onClick={() => onPageChange('home')}
-            className="h-[68px] md:h-[72px] flex items-center hover:opacity-80 transition-opacity"
+            className="h-[80px] md:h-[88px] flex items-center hover:opacity-80 transition-opacity"
             title="Xyro Solutions"
           >
             <img 
               src={logoSrc} 
               alt="Xyro Solutions" 
-              className="h-[58px] md:h-[62px] w-auto"
+              className="h-[72px] md:h-[78px] w-auto"
             />
           </button>
 

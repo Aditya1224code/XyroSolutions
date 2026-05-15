@@ -1,10 +1,13 @@
-<svg viewBox="0 0 1152 768" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<svg viewBox="0 0 1152 768" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" shape-rendering="geometricPrecision" text-rendering="optimizeLegibility">
   <defs>
     <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#16D6C9"/>
       <stop offset="50%" stop-color="#34E5E1"/>
       <stop offset="100%" stop-color="#0FB7B0"/>
     </linearGradient>
+    <filter id="logoTextShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.8" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
   </defs>
 
   <g transform="translate(0 8)">
@@ -14,7 +17,7 @@
     <path d="M 726 562 C 690 562 652 522 624 466 C 650 440 682 426 714 426 C 750 426 775 453 775 484 C 775 523 753 562 726 562 Z" fill="url(#leafGradient)" opacity="0.95"/>
   </g>
 
-  <text x="576" y="650" font-family="Arial, sans-serif" font-size="120" font-weight="600" text-anchor="middle">
+  <text x="576" y="650" font-family="Arial, sans-serif" font-size="140" font-weight="900" text-anchor="middle" letter-spacing="0.5" filter="url(#logoTextShadow)">
     <tspan fill="#19D5D0">Xyro</tspan><tspan fill="#111111">Solutions</tspan>
   </text>
 </svg>

@@ -113,24 +113,6 @@ export default function HeroSection() {
           animation: loaded ? 'spin-slow 20s linear infinite' : 'none'
         }}
       />
-      <div
-        className={`absolute left-[6%] top-[4%] md:top-[6%] z-10 transition-all duration-800 hover:scale-125 hover:rotate-45 ${
-          loaded ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-0 rotate-180'
-        }`}
-        style={{ transitionDelay: '500ms' }}
-      >
-        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" className="md:w-6 md:h-6 lg:w-8 lg:h-8">
-          <path
-            d="M16 0V32M0 16H32"
-            stroke={textFloating ? "#ffffff" : "#111111"}
-            strokeWidth="3"
-            className="transition-all duration-1000"
-            style={{
-              filter: textFloating ? 'drop-shadow(2px 2px 4px rgba(0,0,0,0.7))' : 'none'
-            }}
-          />
-        </svg>
-      </div>
 
       {/* Desktop Layout - Show on ALL devices */}
       <div className="min-h-screen relative flex flex-col">
