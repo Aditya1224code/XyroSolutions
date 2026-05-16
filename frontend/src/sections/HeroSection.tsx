@@ -116,90 +116,88 @@ export default function HeroSection() {
 
       {/* Desktop Layout - Show on ALL devices */}
       <div className="min-h-screen relative flex flex-col">
-        {/* Mobile Layout: Single image at top, content below */}
-        <div className="md:hidden flex flex-col h-screen">
-          {/* Mobile Image - takes top 45% */}
-          <div
-            className={`relative w-full h-[45vh] overflow-hidden transition-all duration-800 ${
-              loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
-            }`}
-          >
-            <img
-              src={heroImages.primary}
-              alt="Our team"
-              className="w-full h-full object-cover img-mono"
-            />
-            {/* Gradient fade at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#F6F6F2] to-transparent" />
-          </div>
-
-          {/* Mobile Content */}
-          <div className="flex-1 flex flex-col justify-center px-4 -mt-8">
-            <div
-              className={`rounded-xl p-4 transition-all duration-2000 ${
-                loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-              } ${
-                boxVisible
-                  ? 'bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-200 dark:bg-[#111827]/95 dark:border-white/10 dark:shadow-[0_20px_60px_rgba(0,0,0,0.45)]'
-                  : 'bg-transparent shadow-none border-transparent'
+        {/* Mobile Layout: Clear stacked version matching desktop style */}
+        <div className="md:hidden relative z-10 px-4 pt-28 pb-8">
+          <div className="mx-auto w-full max-w-md">
+            <p
+              className={`font-mono text-[11px] tracking-[0.14em] mb-3 transition-all duration-600 uppercase text-cyan-600 dark:text-cyan-400 ${
+                loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
               }`}
+              style={{ transitionDelay: '200ms' }}
             >
-              <p
-                className={`font-mono text-[10px] tracking-[0.12em] mb-2 transition-all duration-600 ${
-                  loaded ? 'opacity-100' : 'opacity-0'
-                } ${textFloating ? 'text-dark' : 'text-gray-600 dark:text-slate-300'}`}
-              >
-                {content.hero.microLabel}
-              </p>
+              {content.hero.microLabel}
+            </p>
 
-              <h1
-                className={`font-display font-bold text-3xl leading-[0.95] tracking-tight uppercase mb-3 transition-all duration-1000 text-dark`}
-              >
-                {content.hero.headline.split(' / ').map((line, i) => (
-                  <span
-                    key={i}
-                    className={`block transition-all duration-600 ${
-                      loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                    style={{ transitionDelay: `${200 + (i * 100)}ms` }}
-                  >
-                    {line}
-                  </span>
-                ))}
-              </h1>
+            <h1
+              className={`font-display font-bold text-4xl leading-[1.05] tracking-tight mb-4 transition-all duration-800 text-dark dark:text-white ${
+                loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              }`}
+              style={{ transitionDelay: '280ms' }}
+            >
+              {renderHeadline(content.hero.headline)}
+            </h1>
 
-              <p
-                className={`text-sm text-gray-700 dark:text-slate-300 mb-4 transition-all duration-600 ${
-                  loaded ? 'opacity-100' : 'opacity-0'
-                }`}
-                style={{ transitionDelay: '500ms' }}
-              >
-                {content.hero.subheadline}
-              </p>
+            <p
+              className={`text-sm leading-relaxed text-gray-700 dark:text-gray-300 mb-6 transition-all duration-800 ${
+                loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              }`}
+              style={{ transitionDelay: '360ms' }}
+            >
+              {content.hero.subheadline}
+            </p>
 
-              <button
-                onClick={scrollToWork}
-                className={`group btn-primary inline-flex items-center gap-2 text-sm px-5 py-2.5 transition-all duration-600 ${
-                  loaded ? 'opacity-100' : 'opacity-0'
-                }`}
-                style={{ transitionDelay: '700ms' }}
+            <button
+              onClick={scrollToWork}
+              className={`group btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-700 ${
+                loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              }`}
+              style={{ transitionDelay: '440ms' }}
+            >
+              <span>{content.hero.cta}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            <div
+              className={`relative mt-8 h-[44vh] min-h-[300px] transition-all duration-900 ${
+                loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: '520ms' }}
+            >
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-56 h-56 rounded-full bg-gradient-to-r from-cyan-200 to-cyan-100 opacity-40 blur-3xl" />
+
+              <div
+                className="absolute right-0 top-0 w-[82%] h-[78%] rounded-3xl overflow-hidden shadow-2xl z-[3] border-4 border-cyan-400"
+                style={{ clipPath: 'polygon(5% 0, 100% 0, 100% 100%, 0 100%)' }}
               >
-                <span>{content.hero.cta}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+                <img
+                  src={heroImages.secondary}
+                  alt="Team member at monument"
+                  className="w-full h-full object-cover img-mono"
+                />
+              </div>
+
+              <div className="absolute right-0 bottom-0 w-28 h-28 bg-gradient-to-tl from-cyan-500 to-teal-400 rounded-tl-3xl z-[1]" />
+
+              <div className="absolute left-0 bottom-0 w-[52%] h-[52%] rounded-2xl overflow-hidden shadow-2xl z-[4] border-4 border-cyan-400">
+                <img
+                  src={heroImages.primary}
+                  alt="Our team"
+                  className="w-full h-full object-cover img-mono"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Mobile Scroll Indicator */}
-          <div
-            className={`pb-4 flex justify-center transition-all duration-800 ${
-              loaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ transitionDelay: '900ms' }}
-            onClick={scrollToWork}
-          >
-            <div className="w-5 h-8 border-2 border-dark dark:border-[#F8FAFC] rounded-full flex justify-center pt-1.5">
-              <div className="w-0.5 h-1.5 bg-dark dark:bg-[#F8FAFC] rounded-full animate-bounce" />
+            <div
+              className={`mt-6 flex items-center justify-center gap-2 transition-all duration-700 ${
+                loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+              style={{ transitionDelay: '620ms' }}
+              onClick={scrollToWork}
+            >
+              <div className="w-5 h-8 border-2 border-dark dark:border-gray-400 rounded-full flex justify-center pt-1">
+                <div className="w-0.5 h-1.5 bg-dark dark:bg-gray-400 rounded-full animate-bounce" />
+              </div>
+              <span className="text-xs text-gray-600 dark:text-gray-400">Scroll down</span>
             </div>
           </div>
         </div>
