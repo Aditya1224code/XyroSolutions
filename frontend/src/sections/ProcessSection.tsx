@@ -57,7 +57,7 @@ export default function ProcessSection() {
           style={{ transitionDelay: '300ms' }}
         >
           <img
-            src="/process_workspace_right.jpg"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1778926052/ChatGPT_Image_May_16_2026_03_37_14_PM_lbvcg5.png"
             alt="Design process"
             className="w-full h-full object-cover img-mono"
           />
@@ -161,7 +161,7 @@ export default function ProcessSection() {
           style={{ transitionDelay: '300ms' }}
         >
           <img
-            src="/process_workspace_right.jpg"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1778926052/ChatGPT_Image_May_16_2026_03_37_14_PM_lbvcg5.png"
             alt="Design process"
             className="w-full h-full object-cover img-mono"
           />

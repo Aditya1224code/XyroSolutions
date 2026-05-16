@@ -4,8 +4,8 @@ import { contentApi, authApi } from '../lib/api';
 // Default content for the website (fallback)
 const defaultContent = {
   hero: {
-    headline: "CREATIVE / STUDIO / BUILT FOR SMALL BRANDS",
-    subheadline: "We design identities, sites, and campaigns that turn small teams into memorable brands.",
+    headline: "We bring brands to life.",
+    subheadline: "XyroSolutions is a creative agency specializing in brand identity, web design, and digital campaigns for ambitious startups and growing businesses.",
     cta: "Explore work",
     microLabel: "XYROSOLUTIONS — 2026"
   },
