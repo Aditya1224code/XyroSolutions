@@ -117,8 +117,8 @@ export default function HeroSection() {
       {/* Desktop Layout - Show on ALL devices */}
       <div className="min-h-screen relative flex flex-col">
         {/* Mobile Layout: Clear stacked version matching desktop style */}
-        <div className="md:hidden relative z-10 px-4 pt-28 pb-8">
-          <div className="mx-auto w-full max-w-md">
+        <div className="md:hidden relative z-10 px-4 pt-20 pb-12">
+          <div className="mx-auto w-full">
             <p
               className={`font-mono text-[11px] tracking-[0.14em] mb-3 transition-all duration-600 uppercase text-cyan-600 dark:text-cyan-400 ${
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
@@ -158,15 +158,15 @@ export default function HeroSection() {
             </button>
 
             <div
-              className={`relative mt-8 h-[44vh] min-h-[300px] transition-all duration-900 ${
+              className={`relative mt-10 w-full h-96 transition-all duration-900 ${
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: '520ms' }}
             >
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-56 h-56 rounded-full bg-gradient-to-r from-cyan-200 to-cyan-100 opacity-40 blur-3xl" />
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-cyan-200 to-cyan-100 opacity-40 blur-3xl" />
 
               <div
-                className="absolute right-0 top-0 w-[82%] h-[78%] rounded-3xl overflow-hidden shadow-2xl z-[3] border-4 border-cyan-400"
+                className="absolute right-0 top-0 w-72 h-72 rounded-3xl overflow-hidden shadow-2xl z-[3] border-4 border-cyan-400"
                 style={{ clipPath: 'polygon(5% 0, 100% 0, 100% 100%, 0 100%)' }}
               >
                 <img
@@ -176,9 +176,9 @@ export default function HeroSection() {
                 />
               </div>
 
-              <div className="absolute right-0 bottom-0 w-28 h-28 bg-gradient-to-tl from-cyan-500 to-teal-400 rounded-tl-3xl z-[1]" />
+              <div className="absolute right-0 bottom-0 w-32 h-32 bg-gradient-to-tl from-cyan-500 to-teal-400 rounded-tl-3xl z-[1]" />
 
-              <div className="absolute left-0 bottom-0 w-[52%] h-[52%] rounded-2xl overflow-hidden shadow-2xl z-[4] border-4 border-cyan-400">
+              <div className="absolute left-0 bottom-0 w-40 h-40 rounded-2xl overflow-hidden shadow-2xl z-[4] border-4 border-cyan-400">
                 <img
                   src={heroImages.primary}
                   alt="Our team"
