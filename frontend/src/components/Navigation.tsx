@@ -12,6 +12,7 @@ interface NavigationProps {
 export default function Navigation({ scrolled, onAdminClick, onPageChange, currentPage }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -20,6 +21,10 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
 
   const isDark = mounted && resolvedTheme === 'dark';
   const logoSrc = isDark ? '/logo-dark.svg' : '/logo.svg';
+
+  useEffect(() => {
+    setLogoLoaded(false);
+  }, [logoSrc]);
 
   const toggleTheme = () => {
     setTheme(isDark ? 'light' : 'dark');
@@ -76,7 +81,8 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
               src={logoSrc} 
               alt="Xyro Solutions" 
               className="h-[80px] md:h-[78px] w-auto"
-              style={{ visibility: mounted ? 'visible' : 'hidden' }}
+              onLoad={() => setLogoLoaded(true)}
+              style={{ opacity: mounted && logoLoaded ? 1 : 0, transition: 'opacity 160ms ease' }}
             />
           </button>
 
