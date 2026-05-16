@@ -76,6 +76,7 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
               src={logoSrc} 
               alt="Xyro Solutions" 
               className="h-[80px] md:h-[78px] w-auto"
+              style={{ visibility: mounted ? 'visible' : 'hidden' }}
             />
           </button>
 
@@ -110,7 +111,7 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               disabled={!mounted}
             >
-              {mounted && isDark ? <SunMedium size={18} /> : <Moon size={18} />}
+              {mounted ? (isDark ? <SunMedium size={18} /> : <Moon size={18} />) : <span className="inline-block h-[18px] w-[18px]" />}
             </button>
           </div>
 
@@ -165,7 +166,7 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             disabled={!mounted}
           >
-            {mounted && isDark ? <SunMedium size={18} /> : <Moon size={18} />}
+            {mounted ? (isDark ? <SunMedium size={18} /> : <Moon size={18} />) : <span className="inline-block h-[18px] w-[18px]" />}
             <span>{isDark ? 'Light mode' : 'Dark mode'}</span>
           </button>
         </div>
