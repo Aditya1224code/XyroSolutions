@@ -7,7 +7,11 @@ const heroImages = {
   secondary: 'https://res.cloudinary.com/dr4w6ordx/image/upload/v1773596421/f48bf7a6-fd0e-4e29-89fb-5d425336f46b_ukczim.png',
 } as const;
 
-export default function HeroSection() {
+type HeroSectionProps = {
+  onNavigate?: (page: string) => void;
+};
+
+export default function HeroSection({ onNavigate }: HeroSectionProps) {
   const { content } = useContent();
   const [loaded, setLoaded] = useState(false);
   const [textFloating, setTextFloating] = useState(false);
@@ -30,6 +34,13 @@ export default function HeroSection() {
   }, []);
 
   const scrollToWork = () => {
+    // If parent provided a navigation handler, use it to go to the work page
+    if (onNavigate) {
+      onNavigate('work');
+      return;
+    }
+
+    // Fallback: scroll to portfolio section on the current page
     const element = document.querySelector('#portfolio');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

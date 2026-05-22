@@ -53,7 +53,7 @@ function MainWebsite({
       
       {/* Main Content */}
       <main>
-        <HeroSection />
+        <HeroSection onNavigate={onPageChange} />
         <AboutSection />
         <PortfolioSection />
         <ProcessSection />
