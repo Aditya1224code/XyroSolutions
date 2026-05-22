@@ -51,15 +51,16 @@ export default function ProcessSection() {
 
         {/* Mobile Image */}
         <div 
-          className={`w-full h-48 mb-8 rounded-lg overflow-hidden transition-all duration-1000 ${
+          className={`w-full mb-8 rounded-lg transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
           }`}
           style={{ transitionDelay: '300ms' }}
         >
           <img
-            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1778926052/ChatGPT_Image_May_16_2026_03_37_14_PM_lbvcg5.png"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png"
             alt="Design process"
-            className="w-full h-full object-cover img-mono"
+            className="w-full h-auto object-contain object-center img-mono"
+            style={{ maxHeight: '48vh' }}
           />
         </div>
 
@@ -155,15 +156,16 @@ export default function ProcessSection() {
 
         {/* Right Photo */}
         <div 
-          className={`absolute right-[6vw] top-[10vh] w-[42vw] h-[80vh] z-[2] overflow-hidden transition-all duration-1000 ${
+          className={`absolute right-[6vw] top-[10vh] w-[42vw] z-[2] transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
           }`}
           style={{ transitionDelay: '300ms' }}
         >
           <img
-            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1778926052/ChatGPT_Image_May_16_2026_03_37_14_PM_lbvcg5.png"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png"
             alt="Design process"
-            className="w-full h-full object-cover img-mono"
+            className="w-full h-auto object-contain object-center img-mono"
+            style={{ maxHeight: '80vh' }}
           />
         </div>
 

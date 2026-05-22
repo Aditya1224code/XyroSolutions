@@ -87,7 +87,7 @@ export default function AboutSection() {
           style={{ transitionDelay: '200ms' }}
         >
           <img
-            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773597157/istockphoto-1393912474-612x612_fdxk5q.jpg"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png"
             alt="Team member"
             className="w-full h-full object-cover img-mono"
           />
@@ -128,7 +128,7 @@ export default function AboutSection() {
           style={{ transitionDelay: '200ms' }}
         >
           <img
-            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1773597157/istockphoto-1393912474-612x612_fdxk5q.jpg"
+            src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png"
             alt="Team member"
             className="w-full h-full object-cover img-mono"
           />

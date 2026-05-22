@@ -52,7 +52,7 @@ const defaultContent = {
   team: {
     members: [
       { name: "Alex Chen", role: "Creative Director", image: "/hero_portrait_left.jpg" },
-      { name: "Sam Rivera", role: "Lead Designer", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1773597157/istockphoto-1393912474-612x612_fdxk5q.jpg" },
+      { name: "Sam Rivera", role: "Lead Designer", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png" },
       { name: "Jordan Park", role: "Developer", image: "/services_workspace_right.jpg" }
     ]
   },

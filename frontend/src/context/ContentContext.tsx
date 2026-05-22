@@ -64,7 +64,7 @@ const defaultContent = {
     cta: "Read more",
     posts: [
       { title: "How to name your product without overthinking it", excerpt: "A practical guide to finding a name that sticks.", date: "Feb 10, 2026", readTime: "5 min read", image: "/hero_portrait_left.jpg" },
-      { title: "The 3-week landing page playbook", excerpt: "Ship fast without sacrificing quality.", date: "Feb 5, 2026", readTime: "7 min read", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1773597157/istockphoto-1393912474-612x612_fdxk5q.jpg" },
+      { title: "The 3-week landing page playbook", excerpt: "Ship fast without sacrificing quality.", date: "Feb 5, 2026", readTime: "7 min read", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png" },
       { title: "Design systems for tiny teams", excerpt: "Build consistency without the overhead.", date: "Jan 28, 2026", readTime: "4 min read", image: "/services_workspace_right.jpg" }
     ]
   },
@@ -83,7 +83,7 @@ const defaultContent = {
   team: {
     members: [
       { name: "Alex Chen", role: "Creative Director", image: "/hero_portrait_left.jpg" },
-      { name: "Sam Rivera", role: "Lead Designer", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1773597157/istockphoto-1393912474-612x612_fdxk5q.jpg" },
+      { name: "Sam Rivera", role: "Lead Designer", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png" },
       { name: "Jordan Park", role: "Developer", image: "/services_workspace_right.jpg" }
     ]
   }
