@@ -7,6 +7,8 @@ import WorkPage from './sections/WorkPage';
 import WorkCategoryPage from './sections/WorkCategoryPage';
 import ServicesPage from './sections/ServicesPage';
 import ServiceInquiryPage from './sections/ServiceInquiryPage';
+import PrivacyPage from './sections/Privacy';
+import TermsPage from './sections/Terms';
 import ProcessSection from './sections/ProcessSection';
 import ResultsSection from './sections/ResultsSection';
 import BlogSection from './sections/BlogSection';
@@ -17,7 +19,7 @@ import { ContentProvider } from './context/ContentContext';
 import { useContent } from './hooks/useContent';
 import { authApi } from './lib/api';
 
-type Page = 'home' | 'work' | 'work-category' | 'services' | 'service-inquiry' | 'admin-login' | 'admin-dashboard';
+type Page = 'home' | 'work' | 'work-category' | 'services' | 'service-inquiry' | 'admin-login' | 'admin-dashboard' | 'privacy' | 'terms';
 
 function MainWebsite({ 
   onAdminClick, 
@@ -59,7 +61,7 @@ function MainWebsite({
         <ProcessSection />
         <ResultsSection />
         <BlogSection />
-        <ContactSection />
+        <ContactSection onNavigate={onPageChange} />
       </main>
     </div>
   );
@@ -113,6 +115,10 @@ function AppContent() {
       );
     case 'work':
       return <WorkPage onBackToHome={() => navigateTo('home')} onSelectCategory={handleWorkCategorySelect} />;
+    case 'privacy':
+      return <PrivacyPage onBack={() => navigateTo('home')} />;
+    case 'terms':
+      return <TermsPage onBack={() => navigateTo('home')} />;
     case 'work-category':
       return <WorkCategoryPage category={selectedWorkCategory} onBackToWork={() => navigateTo('work')} onGoHome={() => navigateTo('home')} />;
     case 'services':
