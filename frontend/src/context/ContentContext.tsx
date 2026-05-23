@@ -267,6 +267,15 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
 
   // Initial fetch
   useEffect(() => {
+    // During local development, clear cached content so code changes appear immediately
+    if (import.meta.env && import.meta.env.DEV) {
+      try {
+        localStorage.removeItem('xyro-content');
+      } catch (e) {
+        // ignore
+      }
+    }
+
     fetchContent();
   }, [fetchContent]);
 
