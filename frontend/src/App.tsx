@@ -57,7 +57,7 @@ function MainWebsite({
       <main>
         <HeroSection onNavigate={onPageChange} />
         <AboutSection />
-        <PortfolioSection />
+        <PortfolioSection onNavigate={onPageChange} />
         <ProcessSection />
         <ResultsSection />
         <BlogSection />

@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useContent } from '../hooks/useContent';
 import { ArrowRight, ArrowUpRight, X } from 'lucide-react';
+import NeonButton from '../components/ui/NeonButton';
 
-export default function PortfolioSection() {
+export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: string, category?: string) => void }) {
   const { content } = useContent();
   const { ref: sectionRef, isVisible } = useScrollReveal<HTMLElement>({ threshold: 0.15 });
   const [showAllProjects, setShowAllProjects] = useState(false);
@@ -42,16 +43,14 @@ export default function PortfolioSection() {
           >
             {content.portfolio.body}
           </p>
-          <button 
+          <NeonButton
             onClick={() => setShowAllProjects(true)}
-            className={`inline-flex items-center gap-2 font-medium text-dark dark:text-[#F8FAFC] hover:text-lime transition-all duration-700 group ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'
-            }`}
+            className={`${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}
             style={{ transitionDelay: '500ms' }}
+            rightIcon={<ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />}
           >
             {content.portfolio.cta}
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          </NeonButton>
         </div>
 
         {/* Mobile Project Cards */}
@@ -135,11 +134,14 @@ export default function PortfolioSection() {
                 <p className="text-sm text-green-400 font-medium">{content.portfolio.projects[0].subtitle}</p>
                 <h3 className="mt-2 text-2xl md:text-3xl font-extrabold text-white leading-tight">{content.portfolio.projects[0].title}</h3>
                 <p className="mt-3 text-sm text-gray-300 max-w-md">A complete real estate CRM platform for brokers, agents &amp; property management.</p>
-                <div className="mt-6">
-                  <button className="inline-flex items-center gap-2 bg-white/6 hover:bg-white/10 text-white px-4 py-2 rounded-md border border-white/10 shadow-sm">
-                    View Case Study
-                  </button>
-                </div>
+                    <div className="mt-6">
+                      <button
+                        onClick={() => onNavigate ? onNavigate('work-category', 'web-development') : null}
+                        className="inline-flex items-center gap-2 bg-white/6 hover:bg-white/10 text-white px-4 py-2 rounded-md border border-white/10 shadow-sm"
+                      >
+                        View Case Study
+                      </button>
+                    </div>
               </div>
 
               {/* Image column: right on desktop, above content on mobile */}
@@ -154,13 +156,12 @@ export default function PortfolioSection() {
           </div>
 
           {/* Top-right: headline block */}
-          <div className="row-start-1 row-end-2 col-start-2 col-end-3 flex flex-col justify-center pr-8">
+          <div className="row-start-1 row-end-2 col-start-2 col-end-3 flex flex-col justify-center pr-8 bg-green-50 p-6 rounded-lg">
             <h2 className={`font-display font-bold text-5xl lg:text-6xl leading-[0.95] tracking-tight text-dark dark:text-[#F8FAFC] uppercase mb-4`}>{content.portfolio.headline}</h2>
             <p className="text-lg text-gray-custom dark:text-slate-300 mb-6 max-w-md">{content.portfolio.body}</p>
-            <button onClick={() => setShowAllProjects(true)} className="inline-flex items-center gap-2 font-medium text-dark dark:text-[#F8FAFC] hover:text-lime">
+            <NeonButton onClick={() => setShowAllProjects(true)} rightIcon={<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}>
               {content.portfolio.cta}
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </NeonButton>
           </div>
 
           {/* Bottom-left: second image (square under first) */}
@@ -171,7 +172,15 @@ export default function PortfolioSection() {
                 <h3 className="mt-2 text-2xl md:text-3xl font-extrabold text-white leading-tight">{content.portfolio.projects[1].title}</h3>
                 <p className="mt-3 text-sm text-gray-300 max-w-md">Smart IoT and automation solutions built for real-world innovation.</p>
                 <div className="mt-6">
-                  <button className="inline-flex items-center gap-2 bg-white/6 hover:bg-white/10 text-white px-4 py-2 rounded-md border border-white/10 shadow-sm">
+                  <button
+                    onClick={() => {
+                      if (onNavigate) {
+                        onNavigate('work');
+                        setTimeout(() => onNavigate('work-category', 'sih-alumni'), 220);
+                      }
+                    }}
+                    className="inline-flex items-center gap-2 bg-white/6 hover:bg-white/10 text-white px-4 py-2 rounded-md border border-white/10 shadow-sm"
+                  >
                     View Project
                   </button>
                 </div>
