@@ -118,6 +118,45 @@ export default function WorkSection() {
   return (
     <section className="py-12 bg-transparent">
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
+        {/* Featured / Selected Work — three equal cards */}
+        {(() => {
+          const featured = (showAllWork ? filteredWorkItems : filteredWorkItems).slice(0, 3);
+          const fallbacks = ['/portfolio_top_left.jpg', '/portfolio_bottom_left.jpg', '/portfolio_bottom_right.jpg'];
+          const cards = [0, 1, 2].map((i) => ({
+            title: featured[i]?.title || (i === 0 ? 'PropertiesProfessor' : i === 1 ? 'Xyro AI Agent' : 'Daybreak'),
+            subtitle: featured[i]?.subtitle || (i === 0 ? 'Full Stack Platform' : i === 1 ? 'AI Automation' : 'Mobile Application'),
+            image: featured[i]?.image || fallbacks[i],
+            id: featured[i]?._id || `fallback-${i}`
+          }));
+
+          return (
+            <>
+              <div className="flex items-center justify-between mb-6">
+                <div />
+                <div className="text-right">
+                  <h3 className="text-4xl lg:text-5xl font-extrabold text-white">SELECTED WORK</h3>
+                  <p className="text-gray-300 max-w-lg">A few recent launches—designed to move fast and feel human.</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                {cards.map((c) => (
+                  <div key={c.id} className="relative rounded-xl overflow-hidden shadow-xl bg-slate-900 border border-white/5">
+                    <div className="aspect-video w-full">
+                      <img src={c.image} alt={c.title} className="w-full h-full object-cover block" />
+                    </div>
+                    <div className="absolute inset-0 bg-black/40"></div>
+                    <div className="absolute left-6 bottom-6 text-white max-w-xs">
+                      <p className="text-sm text-green-400 font-medium">{c.subtitle}</p>
+                      <h4 className="text-2xl font-semibold mt-1">{c.title}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          );
+        })()}
+
         {/* Category Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {workCategories.map((category, index) => {
