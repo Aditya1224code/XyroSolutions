@@ -20,7 +20,8 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
   }, []);
 
   const isDark = mounted && resolvedTheme === 'dark';
-  const logoSrc = isDark ? '/logo-dark.svg' : '/logo.svg';
+  // Use the uploaded raster logo directly so local previews show the new image immediately
+  const logoSrc = '/logo.png';
 
   useEffect(() => {
     setLogoLoaded(false);
@@ -77,13 +78,19 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
             className="h-[90px] md:h-[88px] flex shrink-0 items-center hover:opacity-80 transition-opacity"
             title="Xyro Solutions"
           >
-            <img 
-              src={logoSrc} 
-              alt="Xyro Solutions" 
-              className="h-[80px] md:h-[78px] w-auto"
-              onLoad={() => setLogoLoaded(true)}
-              style={{ opacity: mounted && logoLoaded ? 1 : 0, transition: 'opacity 160ms ease' }}
-            />
+            <div className="flex items-center gap-3">
+              <img
+                src={logoSrc}
+                alt="Xyro Solutions"
+                className="h-[64px] w-auto" /* reduced ~20% from 80px */
+                onLoad={() => setLogoLoaded(true)}
+                style={{ opacity: mounted && logoLoaded ? 1 : 0, transition: 'opacity 160ms ease' }}
+              />
+              <span className="hidden md:inline-flex items-baseline select-none">
+                <span className="font-display font-extrabold text-[22px]" style={{ color: '#19D5D0' }}>Xyro</span>
+                <span className="font-display font-extrabold text-[22px] text-black ml-1">Solutions</span>
+              </span>
+            </div>
           </button>
 
           {/* Desktop Navigation */}

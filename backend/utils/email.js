@@ -20,6 +20,7 @@ export const sendEmail = async (options) => {
   const mailOptions = {
     from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
     to: options.to,
+    replyTo: options.replyTo,
     subject: options.subject,
     text: options.text,
     html: options.html
@@ -47,7 +48,8 @@ export const sendContactNotification = async (contact) => {
   `;
 
   return sendEmail({
-    to: process.env.EMAIL_USER,
+    to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER || 'xyrosolutions1@gmail.com',
+    replyTo: contact.email,
     subject: `New Contact: ${contact.email}`,
     html
   });
