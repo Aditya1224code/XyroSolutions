@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useContent } from '../hooks/useContent';
-import { ArrowRight, ArrowUpRight, X } from 'lucide-react';
-import NeonButton from '../components/ui/NeonButton';
+import { ArrowUpRight, X } from 'lucide-react';
 
 export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: string, category?: string) => void }) {
   const { content } = useContent();
   const { ref: sectionRef, isVisible } = useScrollReveal<HTMLElement>({ threshold: 0.15 });
-  const [showAllProjects, setShowAllProjects] = useState(false);
+  // showAllProjects removed: CTA button intentionally removed
 
   return (
     <section 
@@ -43,14 +42,7 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
           >
             {content.portfolio.body}
           </p>
-          <NeonButton
-            onClick={() => setShowAllProjects(true)}
-            className={`${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}
-            style={{ transitionDelay: '500ms' }}
-            rightIcon={<ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />}
-          >
-            {content.portfolio.cta}
-          </NeonButton>
+          {/* CTA removed intentionally */}
         </div>
 
         {/* Mobile Project Cards */}
@@ -159,9 +151,7 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
           <div className="row-start-1 row-end-2 col-start-2 col-end-3 flex flex-col justify-center pr-8 bg-green-50 p-6 rounded-lg">
             <h2 className={`font-display font-bold text-5xl lg:text-6xl leading-[0.95] tracking-tight text-dark dark:text-[#F8FAFC] uppercase mb-4`}>{content.portfolio.headline}</h2>
             <p className="text-lg text-gray-custom dark:text-slate-300 mb-6 max-w-md">{content.portfolio.body}</p>
-            <NeonButton onClick={() => setShowAllProjects(true)} rightIcon={<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}>
-              {content.portfolio.cta}
-            </NeonButton>
+            {/* CTA removed intentionally */}
           </div>
 
           {/* Bottom-left: second image (square under first) */}
@@ -215,50 +205,7 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
       </div>
 
       {/* All Projects Modal */}
-      {showAllProjects && (
-        <div 
-          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
-          onClick={() => setShowAllProjects(false)}
-        >
-          <div 
-            className="bg-off-white dark:bg-[#0B0F14] rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto dark:border dark:border-white/10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-off-white dark:bg-[#0B0F14] p-6 border-b flex justify-between items-center z-10 dark:border-white/10">
-              <h2 className="font-display font-bold text-2xl md:text-3xl text-dark dark:text-[#F8FAFC]">All Projects</h2>
-              <button 
-                onClick={() => setShowAllProjects(false)}
-                className="p-2 hover:bg-gray-200 dark:hover:bg-white/10 rounded-full transition-colors"
-              >
-                <X size={24} />
-              </button>
-            </div>
-            <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {content.portfolio.projects.map((project, index) => (
-                <div 
-                  key={index}
-                  className="group cursor-pointer overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow dark:bg-[#111827] dark:border dark:border-white/10"
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <p className="font-mono text-xs text-gray-custom dark:text-slate-300 mb-1">{project.subtitle}</p>
-                    <h3 className="font-display font-bold text-dark dark:text-[#F8FAFC] text-lg flex items-center justify-between">
-                      {project.title}
-                      <ArrowUpRight size={18} className="text-lime opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </h3>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* All Projects modal removed along with CTA */}
     </section>
   );
 }

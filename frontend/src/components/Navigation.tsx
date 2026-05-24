@@ -82,7 +82,7 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
               <img
                 src={logoSrc}
                 alt="Xyro Solutions"
-                className="h-[64px] w-auto" /* reduced ~20% from 80px */
+                className="h-[32px] w-auto" /* slightly smaller display size */
                 onLoad={() => setLogoLoaded(true)}
                 style={{ opacity: mounted && logoLoaded ? 1 : 0, transition: 'opacity 160ms ease' }}
               />

@@ -172,6 +172,13 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
       if (response.data.success) {
         toast.success('Work item created successfully!');
         fetchWorkItems();
+        // Notify other parts of the app (and other tabs) to refresh work listings
+        try {
+          window.dispatchEvent(new CustomEvent('work-updated', { detail: response.data.data }));
+          localStorage.setItem('xyro-work-update', String(Date.now()));
+        } catch (e) {
+          // ignore in non-browser environments
+        }
         return response.data.data;
       }
     } catch (error: any) {
@@ -195,6 +202,10 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
       if (response.data.success) {
         toast.success('Work item updated successfully!');
         fetchWorkItems();
+        try {
+          window.dispatchEvent(new CustomEvent('work-updated', { detail: response.data.data }));
+          localStorage.setItem('xyro-work-update', String(Date.now()));
+        } catch (e) {}
         return response.data.data;
       } else {
         toast.error('Update failed - no success flag');
@@ -222,6 +233,10 @@ export default function AdminDashboard({ onLogout, onViewSite }: AdminDashboardP
       if (response.data.success) {
         toast.success('Work item deleted successfully!');
         fetchWorkItems();
+        try {
+          window.dispatchEvent(new CustomEvent('work-updated', { detail: { _id: id } }));
+          localStorage.setItem('xyro-work-update', String(Date.now()));
+        } catch (e) {}
       }
     } catch (error: any) {
       console.error('Error deleting work item:', error);

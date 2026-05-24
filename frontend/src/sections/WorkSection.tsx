@@ -28,7 +28,7 @@ interface WorkItem {
 }
 
 interface WorkCategory {
-  id: 'sih-alumni' | 'amity-innovation' | 'hackathons' | 'cybercubs' | 'web-development';
+  id: 'sih-alumni' | 'amity-innovation' | 'hackathons' | 'cybercubs' | 'web-development' | 'other';
   title: string;
   description: string;
   icon: React.ElementType;
@@ -77,6 +77,15 @@ const workCategories: WorkCategory[] = [
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-50 hover:bg-indigo-100'
   }
+  ,
+  {
+    id: 'other',
+    title: 'Other',
+    description: 'Miscellaneous projects and experiments',
+    icon: Plus,
+    color: 'text-gray-600',
+    bgColor: 'bg-gray-50 hover:bg-gray-100'
+  }
 ];
 
 export default function WorkSection() {
@@ -88,6 +97,59 @@ export default function WorkSection() {
 
   useEffect(() => {
     fetchWork();
+  }, [selectedCategory]);
+
+  // Listen for external updates (admin create/update/delete) and refresh
+  useEffect(() => {
+    // Debounce and guard variables to avoid flooding the API with requests
+    const fetchTimeoutRef = { current: undefined as unknown as number | undefined };
+    let lastFetchAt = 0;
+
+    const handler = (e?: Event) => {
+      // Try to optimistically merge if event contains the item
+      try {
+        const customEvent = e as CustomEvent | undefined;
+        const newItem = customEvent?.detail;
+        if (newItem && newItem._id) {
+          setWorkItems(prev => {
+            if (selectedCategory === 'all' || newItem.category === selectedCategory) {
+              const exists = prev.find(item => item._id === newItem._id);
+              if (exists) return prev.map(item => item._id === newItem._id ? newItem : item);
+              return [newItem, ...prev];
+            }
+            return prev;
+          });
+        }
+      } catch (err) {
+        // ignore
+      }
+
+      // Debounce re-fetches: wait 400ms after the last event
+      if (fetchTimeoutRef.current) {
+        window.clearTimeout(fetchTimeoutRef.current);
+      }
+
+      fetchTimeoutRef.current = window.setTimeout(() => {
+        const now = Date.now();
+        // If we fetched recently (<800ms), skip this fetch
+        if (now - lastFetchAt < 800) return;
+        lastFetchAt = now;
+        fetchWork();
+      }, 400);
+    };
+
+    const storageHandler = (e: StorageEvent) => {
+      if (e.key === 'xyro-work-update') handler();
+    };
+
+    window.addEventListener('work-updated', handler as EventListener);
+    window.addEventListener('storage', storageHandler as EventListener);
+
+    return () => {
+      window.removeEventListener('work-updated', handler as EventListener);
+      window.removeEventListener('storage', storageHandler as EventListener);
+      if (fetchTimeoutRef.current) window.clearTimeout(fetchTimeoutRef.current);
+    };
   }, [selectedCategory]);
 
   const fetchWork = async () => {
