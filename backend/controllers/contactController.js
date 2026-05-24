@@ -20,7 +20,7 @@ export const submitContact = async (req, res, next) => {
     try {
       if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
         await sendEmail({
-          to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER || 'xyrosolutions1@gmail.com',
+          to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER || 'xyrosolutions.1@gmail.com',
           replyTo: email,
           subject: `New Contact Form Submission from ${email}`,
           html: `
