@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useContent } from '../hooks/useContent';
-import { ArrowUpRight, X } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: string, category?: string) => void }) {
   const { content } = useContent();
