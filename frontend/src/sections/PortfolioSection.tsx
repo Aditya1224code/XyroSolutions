@@ -118,7 +118,10 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
         */}
         <div className={`hidden md:grid md:grid-cols-2 gap-4 px-8 py-8 z-[2] ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
           {/* Top-left: first image (square) */}
-          <div className="row-start-1 row-end-2 col-start-1 col-end-2 overflow-hidden rounded-xl shadow-2xl bg-slate-900 border border-white/5 group relative md:max-w-[80%] mx-auto">
+          <div
+            className="row-start-1 row-end-2 col-start-1 col-end-2 overflow-hidden rounded-xl shadow-2xl bg-slate-900 border border-white/5 group relative md:max-w-[80%] mx-auto cursor-pointer"
+            onClick={() => onNavigate ? onNavigate('work-category', 'web-development') : null}
+          >
             <div className="w-full h-full md:flex md:items-stretch">
               {/* Content column: left on desktop, below image on mobile */}
               <div className="order-last md:order-first md:w-2/5 bg-gradient-to-r from-black/80 via-black/40 to-transparent backdrop-blur-sm p-6 md:p-8 flex flex-col justify-center">
@@ -154,7 +157,15 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
           </div>
 
           {/* Bottom-left: second image (square under first) */}
-          <div className="row-start-2 row-end-3 col-start-1 col-end-2 overflow-hidden rounded-xl shadow-2xl bg-slate-900 border border-white/5 group relative md:max-w-[80%] mx-auto">
+          <div
+            className="row-start-2 row-end-3 col-start-1 col-end-2 overflow-hidden rounded-xl shadow-2xl bg-slate-900 border border-white/5 group relative md:max-w-[80%] mx-auto cursor-pointer"
+            onClick={() => {
+              if (onNavigate) {
+                onNavigate('work');
+                setTimeout(() => onNavigate('work-category', 'sih-alumni'), 220);
+              }
+            }}
+          >
             <div className="w-full h-full md:flex md:items-stretch">
               <div className="order-last md:order-first md:w-2/5 bg-gradient-to-r from-black/80 via-black/40 to-transparent backdrop-blur-sm p-6 md:p-8 flex flex-col justify-center">
                 <p className="text-sm text-green-400 font-medium">{content.portfolio.projects[1].subtitle}</p>
@@ -182,7 +193,10 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
           </div>
 
           {/* Bottom-right: third image (square right of the second) */}
-          <div className="row-start-2 row-end-3 col-start-2 col-end-3 overflow-hidden rounded-xl shadow-2xl bg-slate-900 border border-white/5 group relative md:max-w-[80%] md:justify-self-start md:-ml-12">
+          <div
+            className="row-start-2 row-end-3 col-start-2 col-end-3 overflow-hidden rounded-xl shadow-2xl bg-slate-900 border border-white/5 group relative md:max-w-[80%] md:justify-self-start md:-ml-12 cursor-pointer"
+            onClick={() => onNavigate ? onNavigate('work') : null}
+          >
             <div className="w-full h-full md:flex md:items-stretch">
               <div className="order-last md:order-first md:w-2/5 bg-gradient-to-r from-black/80 via-black/40 to-transparent backdrop-blur-sm p-6 md:p-8 flex flex-col justify-center">
                 <p className="text-sm text-green-400 font-medium">{content.portfolio.projects[2].subtitle}</p>

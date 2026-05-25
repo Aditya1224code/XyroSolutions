@@ -86,9 +86,9 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
                 onLoad={() => setLogoLoaded(true)}
                 style={{ opacity: mounted && logoLoaded ? 1 : 0, transition: 'opacity 160ms ease' }}
               />
-              <span className="hidden md:inline-flex items-baseline select-none">
-                <span className="font-display font-extrabold text-[22px]" style={{ color: '#19D5D0' }}>Xyro</span>
-                <span className="font-display font-extrabold text-[22px] text-black ml-1">Solutions</span>
+              <span className="inline-flex items-baseline select-none">
+                <span className="font-display font-extrabold text-[22px] text-[#19D5D0]">Xyro</span>
+                <span className="font-display font-extrabold text-[22px] ml-1 text-dark dark:text-white">Solutions</span>
               </span>
             </div>
           </button>
