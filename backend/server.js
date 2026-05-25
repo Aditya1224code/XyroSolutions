@@ -35,6 +35,9 @@ connectDB();
 // Initialize express app
 const app = express();
 
+// Render sits behind a proxy/load balancer, so trust forwarded headers there.
+app.set('trust proxy', 1);
+
 // Security middleware
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" }
