@@ -42,8 +42,57 @@ const createTransporter = async () => {
   });
 };
 
+// Send via Brevo (formerly Sendinblue) HTTP API when BREVO_API_KEY is provided
+const sendViaBrevo = async (options) => {
+  const apiKey = process.env.BREVO_API_KEY;
+  if (!apiKey) throw new Error('BREVO_API_KEY not configured');
+
+  // derive sender name/email from EMAIL_FROM or BREVO_FROM or EMAIL_USER
+  const rawFrom = (process.env.BREVO_FROM || process.env.EMAIL_FROM || process.env.EMAIL_USER || '').replace(/^"|"$/g, '').trim();
+  let sender = { email: rawFrom, name: undefined };
+  const m = rawFrom.match(/^(.*)<(.+@.+)>$/);
+  if (m) {
+    sender = { name: m[1].trim().replace(/^"|"$/g, '').trim(), email: m[2].trim() };
+  }
+
+  const toList = Array.isArray(options.to) ? options.to : [options.to];
+
+  const payload = {
+    sender,
+    to: toList.map((t) => ({ email: String(t) })),
+    subject: options.subject,
+    textContent: options.text,
+    htmlContent: options.html
+  };
+
+  if (options.replyTo) payload.replyTo = { email: options.replyTo };
+
+  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'api-key': apiKey
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (!res.ok) {
+    const body = await res.text();
+    const err = new Error(`Brevo error ${res.status}: ${body}`);
+    err.status = res.status;
+    throw err;
+  }
+
+  return res.json();
+};
+
 // Send email
 export const sendEmail = async (options) => {
+  // If Brevo API key is present, use Brevo API instead of SMTP
+  if (process.env.BREVO_API_KEY) {
+    return sendViaBrevo(options);
+  }
+
   const transporter = await createTransporter();
 
   // Trim surrounding quotes if user put the value in quotes in .env
