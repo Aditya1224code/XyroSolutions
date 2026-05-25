@@ -1,5 +1,5 @@
 import Contact from '../models/Contact.js';
-import { sendEmail } from '../utils/email.js';
+import { sendContactNotification } from '../utils/email.js';
 
 // @desc    Submit contact form
 // @route   POST /api/contact
@@ -19,18 +19,7 @@ export const submitContact = async (req, res, next) => {
     // Try to send notification email (don't fail if email fails)
     try {
       if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-        await sendEmail({
-          to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER || 'xyrosolutions.1@gmail.com',
-          replyTo: email,
-          subject: `New Contact Form Submission from ${email}`,
-          html: `
-            <h2>New Contact Form Submission</h2>
-            <p><strong>From:</strong> ${email}</p>
-            <p><strong>Message:</strong></p>
-            <p>${message}</p>
-            <p><strong>Submitted at:</strong> ${new Date().toLocaleString()}</p>
-          `
-        });
+        await sendContactNotification(contact);
       }
     } catch (emailError) {
       console.error('Failed to send notification email:', emailError.message);

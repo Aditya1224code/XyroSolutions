@@ -26,12 +26,20 @@ export const sendEmail = async (options) => {
     html: options.html
   };
 
-  const info = await transporter.sendMail(mailOptions);
-  return info;
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent:', { messageId: info.messageId, to: mailOptions.to });
+    return info;
+  } catch (err) {
+    console.error('Error sending email:', err && err.message ? err.message : err);
+    throw err;
+  }
 };
 
 // Send contact form notification
 export const sendContactNotification = async (contact) => {
+  const text = `New Contact Form Submission\n\nFrom: ${contact.email}\n\nMessage:\n${contact.message}\n\nSubmitted at: ${new Date().toLocaleString()}`;
+
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
       <h2 style="color: #333;">New Contact Form Submission</h2>
@@ -51,6 +59,7 @@ export const sendContactNotification = async (contact) => {
     to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER || 'xyrosolutions.1@gmail.com',
     replyTo: contact.email,
     subject: `New Contact: ${contact.email}`,
+    text,
     html
   });
 };
