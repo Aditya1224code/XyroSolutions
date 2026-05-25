@@ -4,20 +4,28 @@ import nodemailer from 'nodemailer';
 dns.setDefaultResultOrder('ipv4first');
 
 // Create transporter
-const createTransporter = () => {
+const createTransporter = async () => {
+  const host = process.env.EMAIL_HOST || 'smtp.gmail.com';
   const port = Number(process.env.EMAIL_PORT || 587);
   const secure = process.env.EMAIL_SECURE
     ? process.env.EMAIL_SECURE === 'true'
     : port === 465;
 
+  const resolvedHost = host === 'smtp.gmail.com'
+    ? (await dns.promises.lookup(host, { family: 4 })).address
+    : host;
+
   return nodemailer.createTransport({
-    host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+    host: resolvedHost,
     port,
     secure,
     family: 4,
     connectionTimeout: 60000,
     greetingTimeout: 60000,
     socketTimeout: 60000,
+    tls: {
+      servername: host
+    },
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS
@@ -27,7 +35,7 @@ const createTransporter = () => {
 
 // Send email
 export const sendEmail = async (options) => {
-  const transporter = createTransporter();
+  const transporter = await createTransporter();
 
   const mailOptions = {
     from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
