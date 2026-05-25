@@ -1,5 +1,4 @@
 import dns from 'dns';
-import nodemailer from 'nodemailer';
 
 dns.setDefaultResultOrder('ipv4first');
 
@@ -11,37 +10,6 @@ const escapeHtml = (str = '') =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
-
-// Create transporter
-const createTransporter = async () => {
-  const host = process.env.EMAIL_HOST || 'smtp.gmail.com';
-  const port = Number(process.env.EMAIL_PORT || 587);
-  const secure = process.env.EMAIL_SECURE
-    ? process.env.EMAIL_SECURE === 'true'
-    : port === 465;
-
-  const resolvedHost = host === 'smtp.gmail.com'
-    ? (await dns.promises.lookup(host, { family: 4 })).address
-    : host;
-
-  return nodemailer.createTransport({
-    host: resolvedHost,
-    port,
-    secure,
-    family: 4,
-    requireTLS: !secure && port === 587,
-    connectionTimeout: 60000,
-    greetingTimeout: 60000,
-    socketTimeout: 60000,
-    tls: {
-      servername: host
-    },
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
-  });
-};
 
 // Send via Brevo (formerly Sendinblue) HTTP API when BREVO_API_KEY is provided
 const sendViaBrevo = async (options) => {
@@ -87,63 +55,9 @@ const sendViaBrevo = async (options) => {
   return res.json();
 };
 
-const getEmailProvider = () => (process.env.EMAIL_PROVIDER || 'auto').toLowerCase();
-
-const shouldUseBrevo = () => {
-  const provider = getEmailProvider();
-  if (provider === 'brevo') return true;
-  if (provider === 'smtp') return false;
-  return Boolean(process.env.BREVO_API_KEY);
-};
-
-const isNetworkTimeoutError = (err) => {
-  const code = err?.code || '';
-  const message = err?.message || '';
-  return code === 'ETIMEDOUT' || code === 'ESOCKET' || /timeout|ETIMEDOUT|ENETUNREACH|ECONNREFUSED/i.test(message);
-};
-
-const sendViaSmtp = async (options) => {
-  const transporter = await createTransporter();
-
-  // Trim surrounding quotes if user put the value in quotes in .env
-  const fromAddress = (process.env.EMAIL_FROM || process.env.EMAIL_USER || '')
-    .replace(/^"|"$/g, '')
-    .trim();
-
-  const mailOptions = {
-    from: fromAddress,
-    to: options.to,
-    replyTo: options.replyTo,
-    subject: options.subject,
-    text: options.text,
-    html: options.html
-  };
-
-  const info = await transporter.sendMail(mailOptions);
-  console.log('Email sent via SMTP:', { messageId: info.messageId, to: mailOptions.to });
-  return info;
-};
-
 // Send email
 export const sendEmail = async (options) => {
-  // Provider selection: brevo > smtp > auto
-  if (shouldUseBrevo()) {
-    return sendViaBrevo(options);
-  }
-
-  try {
-    return await sendViaSmtp(options);
-  } catch (err) {
-    console.error('Error sending email via SMTP:', err);
-
-    // If SMTP times out but Brevo is configured, retry once via Brevo.
-    if (!process.env.BREVO_API_KEY || !isNetworkTimeoutError(err)) {
-      throw err;
-    }
-
-    console.warn('SMTP failed with a timeout/network error, retrying via Brevo.');
-    return sendViaBrevo(options);
-  }
+  return sendViaBrevo(options);
 };
 
 // Send contact form notification
