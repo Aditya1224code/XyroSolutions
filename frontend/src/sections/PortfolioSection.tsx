@@ -46,13 +46,19 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
 
         {/* Mobile Project Cards */}
         <div className="space-y-4">
-          {content.portfolio.projects.slice(0, 3).map((project, index) => (
-            <div 
-              key={index}
-              className={`relative h-48 overflow-hidden rounded-xl group cursor-pointer transition-all duration-1000 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-              }`}
-              style={{ transitionDelay: `${200 + index * 100}ms` }}
+          {content.portfolio.projects.slice(0,3).map((project, i) => (
+            <div
+              key={project.title}
+              className={`relative h-48 overflow-hidden rounded-xl group cursor-pointer transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+              style={{ transitionDelay: `${200 + i * 100}ms` }}
+              onClick={() => {
+                if (!onNavigate) return;
+                if (i === 0) onNavigate('work-category', 'web-development');
+                else if (i === 1) {
+                  onNavigate('work');
+                  setTimeout(() => onNavigate('work-category', 'sih-alumni'), 220);
+                } else onNavigate('work');
+              }}
             >
               <img
                 src={project.image}
