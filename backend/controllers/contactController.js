@@ -17,11 +17,11 @@ export const submitContact = async (req, res, next) => {
     });
 
     // Send notification email in the background so the form responds quickly.
-    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      sendContactNotification(contact).catch((emailError) => {
-        console.error('Failed to send notification email:', emailError.message);
-      });
-    }
+    // Send notification email in the background so the form responds quickly.
+    // Use the configured email provider (Brevo) — send unconditionally and log failures.
+    sendContactNotification(contact).catch((emailError) => {
+      console.error('Failed to send notification email:', emailError && emailError.message ? emailError.message : emailError);
+    });
 
     res.status(201).json({
       success: true,
