@@ -5,11 +5,19 @@ dns.setDefaultResultOrder('ipv4first');
 
 // Create transporter
 const createTransporter = () => {
+  const port = Number(process.env.EMAIL_PORT || 587);
+  const secure = process.env.EMAIL_SECURE
+    ? process.env.EMAIL_SECURE === 'true'
+    : port === 465;
+
   return nodemailer.createTransport({
     host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-    port: process.env.EMAIL_PORT || 587,
-    secure: process.env.EMAIL_SECURE === 'true',
+    port,
+    secure,
     family: 4,
+    connectionTimeout: 60000,
+    greetingTimeout: 60000,
+    socketTimeout: 60000,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS
