@@ -29,6 +29,7 @@ const createTransporter = async () => {
     port,
     secure,
     family: 4,
+    requireTLS: !secure && port === 587,
     connectionTimeout: 60000,
     greetingTimeout: 60000,
     socketTimeout: 60000,
@@ -86,13 +87,22 @@ const sendViaBrevo = async (options) => {
   return res.json();
 };
 
-// Send email
-export const sendEmail = async (options) => {
-  // If Brevo API key is present, use Brevo API instead of SMTP
-  if (process.env.BREVO_API_KEY) {
-    return sendViaBrevo(options);
-  }
+const getEmailProvider = () => (process.env.EMAIL_PROVIDER || 'auto').toLowerCase();
 
+const shouldUseBrevo = () => {
+  const provider = getEmailProvider();
+  if (provider === 'brevo') return true;
+  if (provider === 'smtp') return false;
+  return Boolean(process.env.BREVO_API_KEY);
+};
+
+const isNetworkTimeoutError = (err) => {
+  const code = err?.code || '';
+  const message = err?.message || '';
+  return code === 'ETIMEDOUT' || code === 'ESOCKET' || /timeout|ETIMEDOUT|ENETUNREACH|ECONNREFUSED/i.test(message);
+};
+
+const sendViaSmtp = async (options) => {
   const transporter = await createTransporter();
 
   // Trim surrounding quotes if user put the value in quotes in .env
@@ -109,13 +119,30 @@ export const sendEmail = async (options) => {
     html: options.html
   };
 
+  const info = await transporter.sendMail(mailOptions);
+  console.log('Email sent via SMTP:', { messageId: info.messageId, to: mailOptions.to });
+  return info;
+};
+
+// Send email
+export const sendEmail = async (options) => {
+  // Provider selection: brevo > smtp > auto
+  if (shouldUseBrevo()) {
+    return sendViaBrevo(options);
+  }
+
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent:', { messageId: info.messageId, to: mailOptions.to });
-    return info;
+    return await sendViaSmtp(options);
   } catch (err) {
-    console.error('Error sending email:', err);
-    throw err;
+    console.error('Error sending email via SMTP:', err);
+
+    // If SMTP times out but Brevo is configured, retry once via Brevo.
+    if (!process.env.BREVO_API_KEY || !isNetworkTimeoutError(err)) {
+      throw err;
+    }
+
+    console.warn('SMTP failed with a timeout/network error, retrying via Brevo.');
+    return sendViaBrevo(options);
   }
 };
 
