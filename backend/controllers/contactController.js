@@ -16,13 +16,11 @@ export const submitContact = async (req, res, next) => {
       userAgent: req.headers['user-agent']
     });
 
-    // Try to send notification email (don't fail if email fails)
-    try {
-      if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-        await sendContactNotification(contact);
-      }
-    } catch (emailError) {
-      console.error('Failed to send notification email:', emailError.message);
+    // Send notification email in the background so the form responds quickly.
+    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+      sendContactNotification(contact).catch((emailError) => {
+        console.error('Failed to send notification email:', emailError.message);
+      });
     }
 
     res.status(201).json({
