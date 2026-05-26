@@ -67,22 +67,22 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-[#F6F6F2]/90 backdrop-blur-md py-4 shadow-sm'
-            : 'bg-transparent py-6'
+            ? 'bg-[#F6F6F2]/90 backdrop-blur-md py-2 shadow-sm'
+            : 'bg-transparent py-4'
         }`}
       >
-        <div className="w-full px-6 lg:px-12 flex items-center justify-between">
+        <div className="w-full px-3 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => onPageChange('home')}
-            className="h-[90px] md:h-[88px] flex shrink-0 items-center hover:opacity-80 transition-opacity"
+            className="h-[70px] md:h-[68px] flex shrink-0 items-center hover:opacity-80 transition-opacity"
             title="Xyro Solutions"
           >
-            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
               <img
                 src={logoSrc}
                 alt="Xyro Solutions"
-                className="h-[32px] w-auto" /* slightly smaller display size */
+                className="h-[24px] w-auto" /* slightly smaller display size */
                 onLoad={() => setLogoLoaded(true)}
                 style={{ opacity: mounted && logoLoaded ? 1 : 0, transition: 'opacity 160ms ease' }}
               />
@@ -94,7 +94,7 @@ export default function Navigation({ scrolled, onAdminClick, onPageChange, curre
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <button
                 key={link.label}

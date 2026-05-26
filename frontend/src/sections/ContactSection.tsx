@@ -143,9 +143,9 @@ export default function ContactSection({ onNavigate }: { onNavigate?: (page: str
             <a href="https://instagram.com/xyrosolutions1" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-lime transition-colors">
               <Instagram size={20} />
             </a>
-            <a href={`mailto:${content.contact.email}`} className="flex items-center gap-2 text-white/40 hover:text-lime transition-colors">
+            <a href={`mailto:${content.contact.email}`} className="flex items-center gap-2 text-white/40 hover:text-lime transition-colors" aria-label={`Email ${content.contact.email}`}>
               <Mail size={20} />
-              <span className="hidden md:inline">{content.contact.email}</span>
+              <span className="sr-only">{content.contact.email}</span>
             </a>
             <a href="https://wa.me/919123108081" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-lime transition-colors">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
