@@ -1,17 +1,33 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useContent } from '../hooks/useContent';
-import { ArrowRight } from 'lucide-react';
+import { Code2, Shield, UsersRound, Zap } from 'lucide-react';
 
 export default function AboutSection() {
   const { content } = useContent();
   const { ref: sectionRef, isVisible } = useScrollReveal<HTMLElement>({ threshold: 0.2 });
 
-  const scrollToStudio = () => {
-    const element = document.querySelector('#process');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const highlightCards = [
+    {
+      icon: Zap,
+      title: 'Fast Delivery',
+      description: 'On-time, every time.'
+    },
+    {
+      icon: Code2,
+      title: 'Clean Code',
+      description: 'Scalable & maintainable.'
+    },
+    {
+      icon: Shield,
+      title: 'Secure',
+      description: 'Security is our priority.'
+    },
+    {
+      icon: UsersRound,
+      title: 'Client Focused',
+      description: 'Your success matters.'
     }
-  };
+  ];
 
   return (
     <section 
@@ -58,25 +74,33 @@ export default function AboutSection() {
             {content.about.body}
           </p>
 
-          <p 
-            className={`font-display font-bold text-xl text-dark dark:text-[#F8FAFC] uppercase tracking-tight mb-6 transition-all duration-700 ${
+          <div
+            className={`grid grid-cols-2 gap-3 max-w-lg transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '600ms' }}
           >
-            {content.about.statement}
-          </p>
+            {highlightCards.map((card) => {
+              const Icon = card.icon;
 
-          <button 
-            onClick={scrollToStudio}
-            className={`inline-flex items-center gap-2 font-medium text-dark dark:text-[#F8FAFC] hover:text-lime transition-all duration-700 group ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '700ms' }}
-          >
-            {content.about.cta}
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+              return (
+                <div
+                  key={card.title}
+                  className="rounded-2xl border border-lime/20 bg-[#141826]/95 p-4 shadow-[0_14px_34px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-colors dark:border-white/15 dark:bg-white/8"
+                >
+                  <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-lime/10 text-lime ring-1 ring-lime/20">
+                    <Icon size={20} strokeWidth={2.2} />
+                  </div>
+                  <h3 className="text-sm font-semibold text-white dark:text-[#F8FAFC]">
+                    {card.title}
+                  </h3>
+                  <p className="mt-1 text-xs leading-relaxed text-white/70 dark:text-slate-300">
+                    {card.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Mobile Image */}
@@ -122,7 +146,7 @@ export default function AboutSection() {
 
         {/* Left Portrait Photo */}
         <div 
-          className={`absolute left-[6vw] top-[10vh] w-[34vw] h-[80vh] z-[2] overflow-hidden transition-all duration-1000 ${
+          className={`absolute left-[6vw] top-[6vh] w-[34vw] h-[80vh] z-[2] overflow-hidden transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
           }`}
           style={{ transitionDelay: '200ms' }}
@@ -135,7 +159,7 @@ export default function AboutSection() {
         </div>
 
         {/* Right Content */}
-        <div className="absolute right-[8vw] top-[18vh] w-[40vw] z-[5]">
+        <div className="absolute right-[8vw] top-[6vh] w-[40vw] z-[5]">
           <p 
             className={`font-mono text-xs tracking-[0.12em] text-gray-custom dark:text-slate-300 mb-4 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -163,25 +187,33 @@ export default function AboutSection() {
             {content.about.body}
           </p>
 
-          <p 
-            className={`font-display font-bold text-2xl md:text-3xl text-dark dark:text-[#F8FAFC] uppercase tracking-tight mb-8 transition-all duration-700 ${
+          <div
+            className={`grid grid-cols-2 gap-4 max-w-xl transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '600ms' }}
           >
-            {content.about.statement}
-          </p>
+            {highlightCards.map((card) => {
+              const Icon = card.icon;
 
-          <button 
-            onClick={scrollToStudio}
-            className={`inline-flex items-center gap-2 font-medium text-dark dark:text-[#F8FAFC] hover:text-lime transition-all duration-700 group ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '700ms' }}
-          >
-            {content.about.cta}
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+              return (
+                <div
+                  key={card.title}
+                  className="rounded-2xl border border-lime/20 bg-[#141826]/95 p-5 shadow-[0_14px_34px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-colors dark:border-white/15 dark:bg-white/8"
+                >
+                  <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-lime/10 text-lime ring-1 ring-lime/20">
+                    <Icon size={22} strokeWidth={2.2} />
+                  </div>
+                  <h3 className="text-base font-semibold text-white dark:text-[#F8FAFC]">
+                    {card.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-white/70 dark:text-slate-300">
+                    {card.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
