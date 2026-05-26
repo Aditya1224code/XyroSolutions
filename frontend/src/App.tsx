@@ -138,6 +138,23 @@ function AppContent() {
 }
 
 function App() {
+  useEffect(() => {
+    const updateDeviceClass = () => {
+      const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+      document.documentElement.classList.toggle('touch-device', isTouchDevice);
+    };
+
+    updateDeviceClass();
+
+    const mediaQuery = window.matchMedia('(hover: none) and (pointer: coarse)');
+    mediaQuery.addEventListener('change', updateDeviceClass);
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateDeviceClass);
+      document.documentElement.classList.remove('touch-device');
+    };
+  }, []);
+
   return (
     <ContentProvider>
       <AppContent />

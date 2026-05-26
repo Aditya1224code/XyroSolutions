@@ -66,6 +66,21 @@
     font-family: 'Inter', sans-serif;
     background-color: hsl(var(--background));
   }
+
+  ::selection {
+    background: #B8FF3D;
+    color: #111111;
+  }
+
+  .dark ::selection {
+    background: #B8FF3D;
+    color: #050608;
+  }
+
+    html.touch-device,
+    html.touch-device body {
+      overflow-x: hidden;
+    }
 }
 
 /* Typography */
@@ -172,6 +187,46 @@
 .dark .grain-overlay {
   opacity: 0.08;
   mix-blend-mode: screen;
+}
+
+html.touch-device .grain-overlay {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch-device responsive overrides */
+html.touch-device .md\:hidden {
+  display: block !important;
+}
+
+html.touch-device .hidden.md\:block,
+html.touch-device .hidden.md\:flex,
+html.touch-device .hidden.md\:grid {
+  display: none !important;
+}
+
+html.touch-device .md\:block {
+  display: block !important;
+}
+
+html.touch-device .md\:flex {
+  display: flex !important;
+}
+
+html.touch-device .md\:grid {
+  display: grid !important;
+}
+
+html.touch-device .md\:inline-flex {
+  display: inline-flex !important;
 }
 
 /* Grain Overlay */

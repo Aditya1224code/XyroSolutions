@@ -114,6 +114,8 @@ export default function AboutSection() {
             src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png"
             alt="Team member"
             className="w-full h-full object-cover img-mono opacity-40"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -155,6 +157,8 @@ export default function AboutSection() {
             src="https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png"
             alt="Team member"
             className="w-full h-full object-cover img-mono opacity-40"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

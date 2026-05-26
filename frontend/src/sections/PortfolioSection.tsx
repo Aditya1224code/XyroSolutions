@@ -64,6 +64,8 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
                 src={project.image}
                 alt={project.title}
                 className="w-full h-full object-cover img-mono group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
               />
               <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
                 <div>
@@ -150,14 +152,16 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
                   src={content.portfolio.projects[0].image}
                   alt={content.portfolio.projects[0].title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
           </div>
 
           {/* Top-right: headline block */}
-          <div className="row-start-1 row-end-2 col-start-2 col-end-3 flex flex-col justify-center pr-8 bg-green-50 p-6 rounded-lg">
-            <h2 className={`font-display font-bold text-5xl lg:text-6xl leading-[0.95] tracking-tight text-dark dark:text-[#F8FAFC] uppercase mb-4`}>{content.portfolio.headline}</h2>
+          <div className="row-start-1 row-end-2 col-start-2 col-end-3 flex flex-col justify-center pr-8 p-6">
+            <h2 className="font-display font-bold text-5xl lg:text-6xl leading-[0.95] tracking-tight text-dark dark:text-[#F8FAFC] uppercase mb-4">{content.portfolio.headline}</h2>
             <p className="text-lg text-gray-custom dark:text-slate-300 mb-6 max-w-md">{content.portfolio.body}</p>
             {/* CTA removed intentionally */}
           </div>
@@ -193,7 +197,7 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
               </div>
 
               <div className="order-first md:order-last md:w-3/5 h-[240px] w-full overflow-hidden">
-                <img src={content.portfolio.projects[1].image} alt={content.portfolio.projects[1].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={content.portfolio.projects[1].image} alt={content.portfolio.projects[1].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
@@ -216,7 +220,7 @@ export default function PortfolioSection({ onNavigate }: { onNavigate?: (page: s
               </div>
 
               <div className="order-first md:order-last md:w-3/5 h-[240px] w-full overflow-hidden">
-                <img src={content.portfolio.projects[2].image} alt={content.portfolio.projects[2].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={content.portfolio.projects[2].image} alt={content.portfolio.projects[2].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
