@@ -38,7 +38,11 @@ const resetContent = async () => {
           { value: "12+", label: "Launches shipped" },
           { value: "3 weeks", label: "Average time to first design" },
           { value: "100%", label: "Remote-friendly process" }
-        ]
+        ],
+        testimonial: {
+          quote: "XyroSolutions turned our rough idea into a brand we're proud to show investors—in under a month.",
+          author: "Founded By SCOR7"
+        }
       },
       team: {
         members: [
