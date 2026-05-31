@@ -109,7 +109,22 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Static files - uploads
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Add cache-busting headers for dynamic content
+app.use('/uploads', (req, res, next) => {
+  // Don't cache images - forces refresh on mobile devices
+  res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
+  next();
+}, express.static(path.join(__dirname, 'uploads')));
+
+// Set cache headers for API responses (no caching for dynamic data)
+app.use('/api', (req, res, next) => {
+  res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
+  next();
+});
 
 // Mount routes
 app.use('/api/auth', authRoutes);
