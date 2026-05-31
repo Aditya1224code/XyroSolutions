@@ -31,9 +31,9 @@ const defaultContent = {
     body: "A few recent launches—designed to move fast and feel human.",
     cta: "View all projects",
     projects: [
-      { title: "Lumen Coffee", subtitle: "Brand + Site", image: "/portfolio_top_left.jpg" },
-      { title: "North Supply", subtitle: "Packaging", image: "/portfolio_bottom_left.jpg" },
-      { title: "Daybreak App", subtitle: "UI Kit", image: "/portfolio_bottom_right.jpg" }
+      { title: "Web Design", subtitle: "Design + Branding", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1779460343/ChatGPT_Image_May_22_2026_07_43_23_PM_gvldqm.png" },
+      { title: "IOT Solutions", subtitle: "Innovation + Manufacturing", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1779559829/nexgen-studio/wzygtdqcuaakv3nsytsb.png" },
+      { title: "App Development", subtitle: "Development + Integration", image: "https://res.cloudinary.com/dr4w6ordx/image/upload/v1779559150/nexgen-studio/vksseodnsre0tcepekgh.png" }
     ]
   },
   process: {
