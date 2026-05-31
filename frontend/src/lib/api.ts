@@ -89,7 +89,7 @@ export const authApi = {
 // Content API
 export const contentApi = {
   getContent: async (): Promise<ApiResponse> => {
-    const response = await fetch(`${API_URL}/content`);
+    const response = await fetch(`${API_URL}/content?t=${Date.now()}`);
     return handleResponse(response);
   },
 

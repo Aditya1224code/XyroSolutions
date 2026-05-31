@@ -4,8 +4,8 @@ import { contentApi, authApi } from '../lib/api';
 // Default content for the website (fallback)
 const defaultContent = {
   hero: {
-    headline: "We bring brands to life.",
-    subheadline: "XyroSolutions is a creative agency specializing in brand identity, web design, and digital campaigns for ambitious startups and growing businesses.",
+    headline: "CREATIVE / STUDIO / BUILT FOR SMALL BRANDS",
+    subheadline: "We design identities, sites, and campaigns that turn small teams into memorable brands.",
     cta: "Explore work",
     microLabel: "XYROSOLUTIONS — 2026"
   },
@@ -55,7 +55,7 @@ const defaultContent = {
     ],
     testimonial: {
       quote: "XyroSolutions turned our rough idea into a brand we're proud to show investors—in under a month.",
-      author: "Ava R., Founder, Lumen Coffee"
+      author: "Founded By SCOR7"
     }
   },
   blog: {

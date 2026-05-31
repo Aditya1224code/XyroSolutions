@@ -12,6 +12,12 @@ const resetContent = async () => {
 
     // Create new content with correct URLs
     const newContent = await Content.create({
+      hero: {
+        headline: "CREATIVE / STUDIO / BUILT FOR SMALL BRANDS",
+        subheadline: "We design identities, sites, and campaigns that turn small teams into memorable brands.",
+        cta: "Explore work",
+        microLabel: "XYROSOLUTIONS — 2026"
+      },
       services: {
         items: [
           { title: "Brand Identity", description: "Logo, type, color, guidelines." },

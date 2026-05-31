@@ -11,6 +11,12 @@ export const getContent = async (req, res, next) => {
     // If no content exists, create default content
     if (!content) {
       content = await Content.create({
+        hero: {
+          headline: "CREATIVE / STUDIO / BUILT FOR SMALL BRANDS",
+          subheadline: "We design identities, sites, and campaigns that turn small teams into memorable brands.",
+          cta: "Explore work",
+          microLabel: "XYROSOLUTIONS — 2026"
+        },
         services: {
           items: [
             { title: "Brand Identity", description: "Logo, type, color, guidelines." },
